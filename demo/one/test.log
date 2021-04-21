@@ -1,0 +1,4 @@
+2021-04-21T11:55:49.376+0800	DEBUG	Trying to hit GET request for www.google.com
+2021-04-21T11:55:49.409+0800	ERROR	Error fetching URL www.google.com : Error = Get www.google.com: unsupported protocol scheme ""
+2021-04-21T11:55:49.409+0800	DEBUG	Trying to hit GET request for http://www.baidu.com
+2021-04-21T11:55:49.501+0800	INFO	Success! statusCode = 200 OK for URL http://www.baidu.com
