@@ -2,6 +2,7 @@ package config
 
 import (
 	"flag"
+	"fmt"
 	"github.com/laz/dubbo-go/common/constant"
 	"github.com/laz/dubbo-go/common/logger"
 	"log"
@@ -50,6 +51,31 @@ func loadProviderConfig() {
 	}
 
 	checkApplicationName(providerConfig.ApplicationConfig)
+	if err := configCenterRefreshProvider(); err != nil {
+		logger.Errorf("[provider config center refresh] %#v", err)
+	}
+	checkRegistries(providerConfig.Registries, providerConfig.Registry)
+
+	for key, svs := range providerConfig.Services {
+		rpcService := GetProviderService(key)
+		if rpcService == nil {
+			logger.Warnf("%s does not exist!", key)
+			continue
+		}
+		svs.id = key
+		svs.Implement(rpcService)
+		svs.Protocols = providerConfig.Protocols
+		if err := svs.Export(); err != nil {
+			panic(fmt.Sprintf("service %s export failed! err: %#v", key, err))
+		}
+	}
+	//注册服务实例
+	//registerServiceInstance()
+}
+func checkRegistries(registries map[string]*RegistryConfig, singleRegistry *RegistryConfig) {
+	if len(registries) == 0 && singleRegistry != nil {
+		registries[constant.DEFAULT_KEY] = singleRegistry
+	}
 }
 func checkApplicationName(config *ApplicationConfig) {
 	if config == nil || len(config.Name) == 0 {

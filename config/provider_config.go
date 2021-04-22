@@ -11,8 +11,11 @@ import (
 
 type ProviderConfig struct {
 	BaseConfig `yaml:",inline"`
-	Services   map[string]*ServiceConfig `yaml:"services" json:"services,omitempty" property:"services"`
-	ConfigType map[string]string         `yaml:"config_type" json:"config_type,omitempty" property:"config_type"`
+	Services   map[string]*ServiceConfig  `yaml:"services" json:"services,omitempty" property:"services"`
+	ConfigType map[string]string          `yaml:"config_type" json:"config_type,omitempty" property:"config_type"`
+	Registries map[string]*RegistryConfig `default:"{}" yaml:"registries" json:"registries" property:"registries"`
+	Registry   *RegistryConfig            `yaml:"registry" json:"registry,omitempty" property:"registry"`
+	Protocols  map[string]*ProtocolConfig `yaml:"protocols" json:"protocols,omitempty" property:"protocols"`
 }
 
 func ProviderInit(confProFile string) error {
@@ -35,5 +38,17 @@ func ProviderInit(confProFile string) error {
 		}
 	}
 
+	return nil
+}
+
+func configCenterRefreshProvider() error {
+	// fresh it
+	/*if providerConfig.ConfigCenterConfig != nil {
+		providerConfig.fatherConfig = providerConfig
+		if err := providerConfig.startConfigCenter((*providerConfig).BaseConfig); err != nil {
+			return perrors.Errorf("start config center error , error message is {%v}", perrors.WithStack(err))
+		}
+		providerConfig.fresh()
+	}*/
 	return nil
 }
