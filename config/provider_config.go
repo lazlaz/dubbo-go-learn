@@ -10,12 +10,14 @@ import (
 )
 
 type ProviderConfig struct {
-	BaseConfig `yaml:",inline"`
-	Services   map[string]*ServiceConfig  `yaml:"services" json:"services,omitempty" property:"services"`
-	ConfigType map[string]string          `yaml:"config_type" json:"config_type,omitempty" property:"config_type"`
-	Registries map[string]*RegistryConfig `default:"{}" yaml:"registries" json:"registries" property:"registries"`
-	Registry   *RegistryConfig            `yaml:"registry" json:"registry,omitempty" property:"registry"`
-	Protocols  map[string]*ProtocolConfig `yaml:"protocols" json:"protocols,omitempty" property:"protocols"`
+	BaseConfig   `yaml:",inline"`
+	Services     map[string]*ServiceConfig  `yaml:"services" json:"services,omitempty" property:"services"`
+	ConfigType   map[string]string          `yaml:"config_type" json:"config_type,omitempty" property:"config_type"`
+	Registries   map[string]*RegistryConfig `default:"{}" yaml:"registries" json:"registries" property:"registries"`
+	Registry     *RegistryConfig            `yaml:"registry" json:"registry,omitempty" property:"registry"`
+	Protocols    map[string]*ProtocolConfig `yaml:"protocols" json:"protocols,omitempty" property:"protocols"`
+	Filter       string                     `yaml:"filter" json:"filter,omitempty" property:"filter"`
+	ProxyFactory string                     `yaml:"proxy_factory" default:"default" json:"proxy_factory,omitempty" property:"proxy_factory"`
 }
 
 func ProviderInit(confProFile string) error {

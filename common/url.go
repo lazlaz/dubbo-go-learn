@@ -1,6 +1,7 @@
 package common
 
 import (
+	"bytes"
 	"net"
 	"net/url"
 	"strings"
@@ -10,6 +11,45 @@ import (
 import (
 	perrors "github.com/pkg/errors"
 )
+
+// role constant
+const (
+	// CONSUMER is consumer role
+	CONSUMER = iota
+	// CONFIGURATOR is configurator role
+	CONFIGURATOR
+	// ROUTER is router role
+	ROUTER
+	// PROVIDER is provider role
+	PROVIDER
+	PROTOCOL = "protocol"
+)
+
+var (
+	// DubboNodes Dubbo service node
+	DubboNodes = [...]string{"consumers", "configurators", "routers", "providers"}
+	// DubboRole Dubbo service role
+	DubboRole = [...]string{"consumer", "", "routers", "provider"}
+)
+
+// nolint
+type RoleType int
+
+func (t RoleType) String() string {
+	return DubboNodes[t]
+}
+
+// WithParamsValue sets params field for url
+func WithParamsValue(key, val string) Option {
+	return func(url *URL) {
+		url.SetParam(key, val)
+	}
+}
+
+// Role returns role by @RoleType
+func (t RoleType) Role() string {
+	return DubboRole[t]
+}
 
 type baseUrl struct {
 	Protocol string
@@ -137,4 +177,24 @@ func WithParams(params url.Values) Option {
 	return func(url *URL) {
 		url.params = params
 	}
+}
+
+func ServiceKey(intf string, group string, version string) string {
+	if intf == "" {
+		return ""
+	}
+	buf := &bytes.Buffer{}
+	if group != "" {
+		buf.WriteString(group)
+		buf.WriteString("/")
+	}
+
+	buf.WriteString(intf)
+
+	if version != "" && version != "0.0.0" {
+		buf.WriteString(":")
+		buf.WriteString(version)
+	}
+
+	return buf.String()
 }
