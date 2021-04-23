@@ -5,6 +5,8 @@ import (
 	"github.com/laz/dubbo-go/config"
 	"github.com/laz/dubbo-go/dubbo-test/pkg"
 	_ "github.com/laz/dubbo-go/protocol/dubbo"
+	_ "github.com/laz/dubbo-go/protocol/protocolwrapper"
+	_ "github.com/laz/dubbo-go/registry/nacos"
 	_ "github.com/laz/dubbo-go/registry/protocol"
 )
 import (

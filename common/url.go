@@ -2,6 +2,8 @@ package common
 
 import (
 	"bytes"
+	"fmt"
+	gxset "github.com/dubbogo/gost/container/set"
 	"github.com/laz/dubbo-go/common/constant"
 	"github.com/laz/dubbo-go/common/logger"
 	"net"
@@ -12,6 +14,7 @@ import (
 )
 
 import (
+	"github.com/jinzhu/copier"
 	perrors "github.com/pkg/errors"
 	"github.com/satori/go.uuid"
 )
@@ -290,4 +293,106 @@ func (c *URL) GetParam(s string, d string) string {
 	}
 
 	return r
+}
+
+// Clone will copy the url
+func (c *URL) Clone() *URL {
+	newURL := &URL{}
+	if err := copier.Copy(newURL, c); err != nil {
+		// this is impossible
+		return newURL
+	}
+	newURL.params = url.Values{}
+	c.RangeParams(func(key, value string) bool {
+		newURL.SetParam(key, value)
+		return true
+	})
+
+	return newURL
+}
+
+// RangeParams will iterate the params
+func (c *URL) RangeParams(f func(key, value string) bool) {
+	c.paramsLock.RLock()
+	defer c.paramsLock.RUnlock()
+	for k, v := range c.params {
+		if !f(k, v[0]) {
+			break
+		}
+	}
+}
+
+// Service gets service
+func (c *URL) Service() string {
+	service := c.GetParam(constant.INTERFACE_KEY, strings.TrimPrefix(c.Path, "/"))
+	if service != "" {
+		return service
+	} else if c.SubURL != nil {
+		service = c.SubURL.GetParam(constant.INTERFACE_KEY, strings.TrimPrefix(c.Path, "/"))
+		if service != "" { // if url.path is "" then return suburl's path, special for registry url
+			return service
+		}
+	}
+	return ""
+}
+
+// Key gets key
+func (c *URL) Key() string {
+	buildString := fmt.Sprintf("%s://%s:%s@%s:%s/?interface=%s&group=%s&version=%s",
+		c.Protocol, c.Username, c.Password, c.Ip, c.Port, c.Service(), c.GetParam(constant.GROUP_KEY, ""), c.GetParam(constant.VERSION_KEY, ""))
+	return buildString
+}
+
+// Copy url based on the reserved parameter's keys.
+func (c *URL) CloneWithParams(reserveParams []string) *URL {
+	params := url.Values{}
+	for _, reserveParam := range reserveParams {
+		v := c.GetParam(reserveParam, "")
+		if len(v) != 0 {
+			params.Set(reserveParam, v)
+		}
+	}
+
+	return NewURLWithOptions(
+		WithProtocol(c.Protocol),
+		WithUsername(c.Username),
+		WithPassword(c.Password),
+		WithIp(c.Ip),
+		WithPort(c.Port),
+		WithPath(c.Path),
+		WithMethods(c.Methods),
+		WithParams(params),
+	)
+}
+
+// GetParams gets values
+func (c *URL) GetParams() url.Values {
+	return c.params
+}
+func (c *URL) CloneExceptParams(excludeParams *gxset.HashSet) *URL {
+	newURL := &URL{}
+	if err := copier.Copy(newURL, c); err != nil {
+		// this is impossible
+		return newURL
+	}
+	newURL.params = url.Values{}
+	c.RangeParams(func(key, value string) bool {
+		if !excludeParams.Contains(key) {
+			newURL.SetParam(key, value)
+		}
+		return true
+	})
+	return newURL
+}
+func (c *URL) String() string {
+	c.paramsLock.Lock()
+	defer c.paramsLock.Unlock()
+	var buf strings.Builder
+	if len(c.Username) == 0 && len(c.Password) == 0 {
+		buf.WriteString(fmt.Sprintf("%s://%s:%s%s?", c.Protocol, c.Ip, c.Port, c.Path))
+	} else {
+		buf.WriteString(fmt.Sprintf("%s://%s:%s@%s:%s%s?", c.Protocol, c.Username, c.Password, c.Ip, c.Port, c.Path))
+	}
+	buf.WriteString(c.params.Encode())
+	return buf.String()
 }

@@ -197,3 +197,18 @@ const (
 	// key of secret access key
 	SECRET_ACCESS_KEY_KEY = ".secretAccessKey"
 )
+const (
+	NACOS_KEY                    = "nacos"
+	NACOS_DEFAULT_ROLETYPE       = 3
+	NACOS_CACHE_DIR_KEY          = "cacheDir"
+	NACOS_LOG_DIR_KEY            = "logDir"
+	NACOS_ENDPOINT               = "endpoint"
+	NACOS_SERVICE_NAME_SEPARATOR = ":"
+	NACOS_CATEGORY_KEY           = "category"
+	NACOS_PROTOCOL_KEY           = "protocol"
+	NACOS_PATH_KEY               = "path"
+	NACOS_NAMESPACE_ID           = "namespaceId"
+	NACOS_PASSWORD               = "password"
+	NACOS_USERNAME               = "username"
+	NACOS_NOT_LOAD_LOCAL_CACHE   = "nacos.not.load.cache"
+)
