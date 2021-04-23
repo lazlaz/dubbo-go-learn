@@ -7,7 +7,8 @@ require (
 	github.com/apache/dubbo-go-hessian2 v1.9.1
 	github.com/dubbogo/gost v1.10.1
 	github.com/pkg/errors v0.9.1
-	go.uber.org/atomic v1.7.0 // indirect
+	github.com/satori/go.uuid v1.2.1-0.20181028125025-b2ce2384e17b
+	go.uber.org/atomic v1.7.0
 	go.uber.org/zap v1.16.0
 	gopkg.in/yaml.v2 v2.4.0
 	rsc.io/quote v1.5.2

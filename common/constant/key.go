@@ -157,7 +157,9 @@ const (
 	// AttachmentKey in context in invoker
 	AttachmentKey = DubboCtxKey("attachment")
 )
-
+const (
+	ASYNC_KEY = "async" // it's value should be "true" or "false" of string type
+)
 const (
 	SERVICE_FILTER_KEY   = "service.filter"
 	REFERENCE_FILTER_KEY = "reference.filter"

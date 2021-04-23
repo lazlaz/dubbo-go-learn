@@ -6,12 +6,16 @@ import (
 	gxnet "github.com/dubbogo/gost/net"
 	"github.com/laz/dubbo-go/common"
 	"github.com/laz/dubbo-go/common/constant"
+	"github.com/laz/dubbo-go/common/extension"
 	_ "github.com/laz/dubbo-go/common/extension"
 	"github.com/laz/dubbo-go/common/logger"
+	"github.com/laz/dubbo-go/protocol"
 	perrors "github.com/pkg/errors"
+	"go.uber.org/atomic"
 	"net/url"
 	"strconv"
 	"strings"
+	"sync"
 	"time"
 )
 
@@ -46,6 +50,11 @@ type ServiceConfig struct {
 	Tag                         string            `yaml:"tag" json:"tag,omitempty" property:"tag"`
 	export                      bool              // a flag to control whether the current service should export or not
 	Protocol                    string            `default:"dubbo"  required:"true"  yaml:"protocol"  json:"protocol,omitempty" property:"protocol"` // multi protocol support, split by ','
+	Token                       string            `yaml:"token" json:"token,omitempty" property:"token"`
+	exported                    *atomic.Bool
+	cacheMutex                  sync.Mutex
+	cacheProtocol               protocol.Protocol
+	exporters                   []protocol.Exporter
 }
 
 // Implement only store the @s and return
@@ -56,19 +65,19 @@ func (c *ServiceConfig) Implement(s common.RPCService) {
 // Export exports the service
 func (c *ServiceConfig) Export() error {
 
-	//	regUrls := loadRegistries(c.Registry, providerConfig.Registries, common.PROVIDER)
-	//	urlMap := c.getUrlMap()
+	regUrls := loadRegistries(c.Registry, providerConfig.Registries, common.PROVIDER)
+	urlMap := c.getUrlMap()
 	protocolConfigs := loadProtocol(c.Protocol, c.Protocols)
 	if len(protocolConfigs) == 0 {
 		logger.Warnf("The service %v's '%v' protocols don't has right protocolConfigs", c.InterfaceName, c.Protocol)
 		return nil
 	}
-	//	ports := getRandomPort(protocolConfigs)
-	//	nextPort := ports.Front();
-	//	proxyFactory := extension.GetProxyFactory(providerConfig.ProxyFactory)
+	ports := getRandomPort(protocolConfigs)
+	nextPort := ports.Front()
+	proxyFactory := extension.GetProxyFactory(providerConfig.ProxyFactory)
 	for _, proto := range protocolConfigs {
 		// registry the service reflect
-		_, err := common.ServiceMap.Register(c.InterfaceName, proto.Name, c.Group, c.Version, c.rpcService)
+		methods, err := common.ServiceMap.Register(c.InterfaceName, proto.Name, c.Group, c.Version, c.rpcService)
 		if err != nil {
 			formatErr := perrors.Errorf("The service %v export the protocol %v error! Error message is %v.",
 				c.InterfaceName, proto.Name, err.Error())
@@ -76,8 +85,58 @@ func (c *ServiceConfig) Export() error {
 			return formatErr
 		}
 
+		port := proto.Port
+		if len(proto.Port) == 0 {
+			port = nextPort.Value.(string)
+			nextPort = nextPort.Next()
+		}
+		ivkURL := common.NewURLWithOptions(
+			common.WithPath(c.InterfaceName),
+			common.WithProtocol(proto.Name),
+			common.WithIp(proto.Ip),
+			common.WithPort(port),
+			common.WithParams(urlMap),
+			common.WithParamsValue(constant.BEAN_NAME_KEY, c.id),
+			common.WithParamsValue(constant.SSL_ENABLED_KEY, strconv.FormatBool(GetSslEnabled())),
+			common.WithMethods(strings.Split(methods, ",")),
+			common.WithToken(c.Token),
+		)
+		if len(c.Tag) > 0 {
+			ivkURL.AddParam(constant.Tagkey, c.Tag)
+		}
+		// post process the URL to be exported
+		c.postProcessConfig(ivkURL)
+		// config post processor may set "export" to false
+		if !ivkURL.GetParamBool(constant.EXPORT_KEY, true) {
+			return nil
+		}
+		if len(regUrls) > 0 {
+			c.cacheMutex.Lock()
+			if c.cacheProtocol == nil {
+				logger.Infof(fmt.Sprintf("First load the registry protocol, url is {%v}!", ivkURL))
+				c.cacheProtocol = extension.GetProtocol("registry")
+			}
+			c.cacheMutex.Unlock()
+			for _, regUrl := range regUrls {
+				regUrl.SubURL = ivkURL
+				invoker := proxyFactory.GetInvoker(regUrl)
+				exporter := c.cacheProtocol.Export(invoker)
+				if exporter == nil {
+					return perrors.New(fmt.Sprintf("Registry protocol new exporter error, registry is {%v}, url is {%v}", regUrl, ivkURL))
+				}
+				c.exporters = append(c.exporters, exporter)
+			}
+		}
+		//发布服务定义信息到元数据中心
+		publishServiceDefinition(ivkURL)
 	}
+	c.exported.Store(true)
 	return nil
+}
+func publishServiceDefinition(url *common.URL) {
+	if remoteMetadataService, err := extension.GetRemoteMetadataService(); err == nil && remoteMetadataService != nil {
+		remoteMetadataService.PublishServiceDefinition(url)
+	}
 }
 
 // Get Random Port
@@ -165,4 +224,9 @@ func (c *ServiceConfig) getUrlMap() url.Values {
 	}
 
 	return urlMap
+}
+
+// postProcessConfig asks registered ConfigPostProcessor to post-process the current ServiceConfig.
+func (c *ServiceConfig) postProcessConfig(url *common.URL) {
+
 }

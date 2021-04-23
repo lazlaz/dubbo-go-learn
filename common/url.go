@@ -2,14 +2,18 @@ package common
 
 import (
 	"bytes"
+	"github.com/laz/dubbo-go/common/constant"
+	"github.com/laz/dubbo-go/common/logger"
 	"net"
 	"net/url"
+	"strconv"
 	"strings"
 	"sync"
 )
 
 import (
 	perrors "github.com/pkg/errors"
+	"github.com/satori/go.uuid"
 )
 
 // role constant
@@ -197,4 +201,93 @@ func ServiceKey(intf string, group string, version string) string {
 	}
 
 	return buf.String()
+}
+
+// NewURLWithOptions will create a new url with options
+func NewURLWithOptions(opts ...Option) *URL {
+	newURL := &URL{}
+	for _, opt := range opts {
+		opt(newURL)
+	}
+	newURL.Location = newURL.Ip + ":" + newURL.Port
+	return newURL
+}
+
+// WithPath sets path for url
+func WithPath(path string) Option {
+	return func(url *URL) {
+		url.Path = "/" + strings.TrimPrefix(path, "/")
+	}
+}
+
+// WithIp sets ip for url
+func WithIp(ip string) Option {
+	return func(url *URL) {
+		url.Ip = ip
+	}
+}
+
+// WithPort sets port for url
+func WithPort(port string) Option {
+	return func(url *URL) {
+		url.Port = port
+	}
+}
+
+// WithToken sets token for url
+func WithToken(token string) Option {
+	return func(url *URL) {
+		if len(token) > 0 {
+			value := token
+			if strings.ToLower(token) == "true" || strings.ToLower(token) == "default" {
+				u, err := uuid.NewV4()
+				if err != nil {
+					logger.Errorf("could not generator UUID: %v", err)
+					return
+				}
+				value = u.String()
+			}
+			url.SetParam(constant.TOKEN_KEY, value)
+		}
+	}
+}
+
+// WithMethods sets methods for url
+func WithMethods(methods []string) Option {
+	return func(url *URL) {
+		url.Methods = methods
+	}
+}
+
+// AddParam will add the key-value pair
+func (c *URL) AddParam(key string, value string) {
+	c.paramsLock.Lock()
+	defer c.paramsLock.Unlock()
+	if c.params == nil {
+		c.params = url.Values{}
+	}
+	c.params.Add(key, value)
+}
+
+// GetParamBool judge whether @key exists or not
+func (c *URL) GetParamBool(key string, d bool) bool {
+	r, err := strconv.ParseBool(c.GetParam(key, ""))
+	if err != nil {
+		return d
+	}
+	return r
+} // GetParam gets value by key
+func (c *URL) GetParam(s string, d string) string {
+	c.paramsLock.RLock()
+	defer c.paramsLock.RUnlock()
+
+	var r string
+	if len(c.params) > 0 {
+		r = c.params.Get(s)
+	}
+	if len(r) == 0 {
+		r = d
+	}
+
+	return r
 }

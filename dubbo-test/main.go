@@ -1,6 +1,7 @@
 package main
 
 import (
+	_ "github.com/laz/dubbo-go/common/proxy/proxy_factory"
 	"github.com/laz/dubbo-go/config"
 	"github.com/laz/dubbo-go/dubbo-test/pkg"
 )

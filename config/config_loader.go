@@ -13,6 +13,7 @@ var (
 	providerConfig *ProviderConfig
 	baseConfig     *BaseConfig
 	confRouterFile string
+	sslEnabled     = false
 )
 
 func init() {
@@ -83,4 +84,8 @@ func checkApplicationName(config *ApplicationConfig) {
 		logger.Errorf(errMsg)
 		panic(errMsg)
 	}
+}
+
+func GetSslEnabled() bool {
+	return sslEnabled
 }
