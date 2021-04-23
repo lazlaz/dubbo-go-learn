@@ -1,6 +1,9 @@
 package protocol
 
-import "github.com/laz/dubbo-go/common"
+import (
+	"github.com/laz/dubbo-go/common"
+	"sync"
+)
 
 // Protocol
 // Extension - protocol
@@ -13,6 +16,12 @@ type Protocol interface {
 	Destroy()
 }
 
+// BaseProtocol is default protocol implement.
+type BaseProtocol struct {
+	exporterMap *sync.Map
+	invokers    []Invoker
+}
+
 // Exporter
 // wrapping invoker
 type Exporter interface {
@@ -20,4 +29,11 @@ type Exporter interface {
 	GetInvoker() Invoker
 	// Unexport exported service.
 	Unexport()
+}
+
+// NewBaseProtocol creates a new BaseProtocol
+func NewBaseProtocol() BaseProtocol {
+	return BaseProtocol{
+		exporterMap: new(sync.Map),
+	}
 }

@@ -3,6 +3,7 @@ package config
 import (
 	"container/list"
 	"fmt"
+	"github.com/creasty/defaults"
 	gxnet "github.com/dubbogo/gost/net"
 	"github.com/laz/dubbo-go/common"
 	"github.com/laz/dubbo-go/common/constant"
@@ -55,6 +56,22 @@ type ServiceConfig struct {
 	cacheMutex                  sync.Mutex
 	cacheProtocol               protocol.Protocol
 	exporters                   []protocol.Exporter
+	unexported                  *atomic.Bool
+}
+
+//制定此方法，yaml框架解析时或走该方法进行解析
+func (c *ServiceConfig) UnmarshalYAML(unmarshal func(interface{}) error) error {
+	if err := defaults.Set(c); err != nil {
+		return err
+	}
+	type plain ServiceConfig
+	if err := unmarshal((*plain)(c)); err != nil {
+		return err
+	}
+	c.exported = atomic.NewBool(false)
+	c.unexported = atomic.NewBool(false)
+	c.export = true
+	return nil
 }
 
 // Implement only store the @s and return
