@@ -86,6 +86,17 @@ func checkApplicationName(config *ApplicationConfig) {
 	}
 }
 
+// GetProviderConfig find the provider config
+// if not found, create new one
+func GetProviderConfig() ProviderConfig {
+	if providerConfig == nil {
+		if providerConfig == nil {
+			return ProviderConfig{}
+		}
+	}
+	return *providerConfig
+}
+
 func GetSslEnabled() bool {
 	return sslEnabled
 }

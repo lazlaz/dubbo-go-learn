@@ -16,3 +16,17 @@ type ExchangeServer struct {
 	Server Server
 	Url    *common.URL
 }
+
+// Create ExchangeServer
+func NewExchangeServer(url *common.URL, server Server) *ExchangeServer {
+	exchangServer := &ExchangeServer{
+		Server: server,
+		Url:    url,
+	}
+	return exchangServer
+}
+
+// start server
+func (server *ExchangeServer) Start() {
+	server.Server.Start()
+}

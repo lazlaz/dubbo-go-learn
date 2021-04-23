@@ -2,6 +2,7 @@ package protocol
 
 import (
 	"github.com/laz/dubbo-go/common"
+	"github.com/laz/dubbo-go/common/logger"
 	"sync"
 )
 
@@ -35,5 +36,44 @@ type Exporter interface {
 func NewBaseProtocol() BaseProtocol {
 	return BaseProtocol{
 		exporterMap: new(sync.Map),
+	}
+}
+
+// ExporterMap gets exporter map.
+func (bp *BaseProtocol) ExporterMap() *sync.Map {
+	return bp.exporterMap
+}
+
+// SetExporterMap set @exporter with @key to local memory.
+func (bp *BaseProtocol) SetExporterMap(key string, exporter Exporter) {
+	bp.exporterMap.Store(key, exporter)
+}
+
+// BaseExporter is default exporter implement.
+type BaseExporter struct {
+	key         string
+	invoker     Invoker
+	exporterMap *sync.Map
+}
+
+// GetInvoker gets invoker
+func (de *BaseExporter) GetInvoker() Invoker {
+	return de.invoker
+
+}
+
+// Unexport exported service.
+func (de *BaseExporter) Unexport() {
+	logger.Infof("Exporter unexport.")
+	de.invoker.Destroy()
+	de.exporterMap.Delete(de.key)
+}
+
+// NewBaseExporter creates a new BaseExporter
+func NewBaseExporter(key string, invoker Invoker, exporterMap *sync.Map) *BaseExporter {
+	return &BaseExporter{
+		key:         key,
+		invoker:     invoker,
+		exporterMap: exporterMap,
 	}
 }

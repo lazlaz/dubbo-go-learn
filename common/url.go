@@ -396,3 +396,9 @@ func (c *URL) String() string {
 	buf.WriteString(c.params.Encode())
 	return buf.String()
 }
+
+// ServiceKey gets a unique key of a service.
+func (c *URL) ServiceKey() string {
+	return ServiceKey(c.GetParam(constant.INTERFACE_KEY, strings.TrimPrefix(c.Path, "/")),
+		c.GetParam(constant.GROUP_KEY, ""), c.GetParam(constant.VERSION_KEY, ""))
+}

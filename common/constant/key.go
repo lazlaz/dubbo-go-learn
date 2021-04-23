@@ -212,3 +212,6 @@ const (
 	NACOS_USERNAME               = "username"
 	NACOS_NOT_LOAD_LOCAL_CACHE   = "nacos.not.load.cache"
 )
+const (
+	TRACING_REMOTE_SPAN_CTX = DubboCtxKey("tracing.remote.span.ctx")
+)

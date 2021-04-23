@@ -18,6 +18,7 @@ type ProviderConfig struct {
 	Protocols    map[string]*ProtocolConfig `yaml:"protocols" json:"protocols,omitempty" property:"protocols"`
 	Filter       string                     `yaml:"filter" json:"filter,omitempty" property:"filter"`
 	ProxyFactory string                     `yaml:"proxy_factory" default:"default" json:"proxy_factory,omitempty" property:"proxy_factory"`
+	ProtocolConf interface{}                `yaml:"protocol_conf" json:"protocol_conf,omitempty" property:"protocol_conf"`
 }
 
 func ProviderInit(confProFile string) error {
