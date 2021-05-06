@@ -402,3 +402,58 @@ func (c *URL) ServiceKey() string {
 	return ServiceKey(c.GetParam(constant.INTERFACE_KEY, strings.TrimPrefix(c.Path, "/")),
 		c.GetParam(constant.GROUP_KEY, ""), c.GetParam(constant.VERSION_KEY, ""))
 }
+func MergeUrl(serviceUrl *URL, referenceUrl *URL) *URL {
+	// After Clone, it is a new url that there is no thread safe issue.
+	mergedUrl := serviceUrl.Clone()
+	params := mergedUrl.GetParams()
+	// iterator the referenceUrl if serviceUrl not have the key ,merge in
+	// referenceUrl usually will not changed. so change RangeParams to GetParams to avoid the string value copy.
+	for key, value := range referenceUrl.GetParams() {
+		if v := mergedUrl.GetParam(key, ""); len(v) == 0 {
+			if len(value) > 0 {
+				params[key] = value
+			}
+		}
+	}
+
+	// loadBalance,cluster,retries strategy config
+	methodConfigMergeFcn := mergeNormalParam(params, referenceUrl, []string{constant.LOADBALANCE_KEY, constant.CLUSTER_KEY, constant.RETRIES_KEY, constant.TIMEOUT_KEY})
+
+	// remote timestamp
+	if v := serviceUrl.GetParam(constant.TIMESTAMP_KEY, ""); len(v) > 0 {
+		params[constant.REMOTE_TIMESTAMP_KEY] = []string{v}
+		params[constant.TIMESTAMP_KEY] = []string{referenceUrl.GetParam(constant.TIMESTAMP_KEY, "")}
+	}
+
+	// finally execute methodConfigMergeFcn
+	for _, method := range referenceUrl.Methods {
+		for _, fcn := range methodConfigMergeFcn {
+			fcn("methods." + method)
+		}
+	}
+	// In this way, we will raise some performance.
+	mergedUrl.ReplaceParams(params)
+	return mergedUrl
+}
+func mergeNormalParam(params url.Values, referenceUrl *URL, paramKeys []string) []func(method string) {
+	methodConfigMergeFcn := make([]func(method string), 0, len(paramKeys))
+	for _, paramKey := range paramKeys {
+		if v := referenceUrl.GetParam(paramKey, ""); len(v) > 0 {
+			params[paramKey] = []string{v}
+		}
+		methodConfigMergeFcn = append(methodConfigMergeFcn, func(method string) {
+			if v := referenceUrl.GetParam(method+"."+paramKey, ""); len(v) > 0 {
+				params[method+"."+paramKey] = []string{v}
+			}
+		})
+	}
+	return methodConfigMergeFcn
+}
+
+// ReplaceParams will replace the URL.params
+// usually it should only be invoked when you want to modify an url, such as MergeURL
+func (c *URL) ReplaceParams(param url.Values) {
+	c.paramsLock.Lock()
+	defer c.paramsLock.Unlock()
+	c.params = param
+}

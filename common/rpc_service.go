@@ -213,3 +213,12 @@ func suiteMethod(method reflect.Method) *MethodType {
 
 	return &MethodType{method: method, argsType: argsType, replyType: replyType, ctxType: ctxType}
 }
+
+// CallbackResponse for different protocol
+type CallbackResponse interface{}
+
+// AsyncCallbackService callback interface for async
+type AsyncCallbackService interface {
+	// Callback: callback
+	CallBack(response CallbackResponse)
+}

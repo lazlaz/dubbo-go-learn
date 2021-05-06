@@ -53,3 +53,9 @@ func WithProxyImplementFunc(f ImplementFunc) ProxyOption {
 func DefaultProxyImplementFunc(p *Proxy, v common.RPCService) {
 
 }
+func (p *Proxy) Implement(v common.RPCService) {
+	p.once.Do(func() {
+		p.implement(p, v)
+		p.rpc = v
+	})
+}

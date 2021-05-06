@@ -18,3 +18,8 @@ func (c *BaseConfig) GetRemoteConfig(name string) (config *RemoteConfig, ok bool
 	config, ok = c.Remotes[name]
 	return
 }
+
+// SetFatherConfig sets father config by @fatherConfig
+func (c *BaseConfig) SetFatherConfig(fatherConfig interface{}) {
+	c.fatherConfig = fatherConfig
+}

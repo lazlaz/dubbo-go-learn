@@ -10,6 +10,7 @@ import (
 )
 
 var (
+	consumerConfig *ConsumerConfig
 	providerConfig *ProviderConfig
 	baseConfig     *BaseConfig
 	confRouterFile string
@@ -29,7 +30,14 @@ func init() {
 	for len(fs.Args()) != 0 {
 		fs.Parse(fs.Args()[1:])
 	}
-
+	if errCon := ConsumerInit(confConFile); errCon != nil {
+		log.Printf("[consumerInit] %#v", errCon)
+		consumerConfig = nil
+	} else {
+		// Even though baseConfig has been initialized, we override it
+		// because we think read from config file is correct config
+		baseConfig = &consumerConfig.BaseConfig
+	}
 	if errPro := ProviderInit(confProFile); errPro != nil {
 		log.Printf("[providerInit] %#v", errPro)
 		providerConfig = nil
@@ -41,8 +49,34 @@ func init() {
 }
 
 func Load() {
+	//初始化引用配置
+	loadConsumerConfig()
 	//初始化服务配置
 	loadProviderConfig()
+}
+
+func loadConsumerConfig() {
+	if consumerConfig == nil {
+		logger.Warnf("consumerConfig is nil!")
+		return
+	}
+
+	checkApplicationName(consumerConfig.ApplicationConfig)
+	if err := configCenterRefreshConsumer(); err != nil {
+		logger.Errorf("[consumer config center refresh] %#v", err)
+	}
+	checkRegistries(consumerConfig.Registries, consumerConfig.Registry)
+	for key, ref := range consumerConfig.References {
+
+		rpcService := GetConsumerService(key)
+		if rpcService == nil {
+			logger.Warnf("%s does not exist!", key)
+			continue
+		}
+		ref.id = key
+		ref.Refer(rpcService)
+		ref.Implement(rpcService)
+	}
 }
 
 func loadProviderConfig() {
