@@ -4,6 +4,8 @@
 
 2 [go struct tag](kownledge/two/READEME.md)
 
-3 [go 加锁示例](kownledge/three/READEME.md)
+3 [go 加锁示例](kownledge/three/README.md)
 
 4 [go 反射示例](kownledge/four/READEME.md)
+
+5 [go signal.Notify优雅退出](kownledge/five/READEME.md)
