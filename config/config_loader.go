@@ -111,6 +111,19 @@ func loadConsumerConfig() {
 	}
 }
 
+// GetConsumerConfig find the consumer config
+// if not found, create new one
+// we use double-check to reduce race condition
+// In general, it will be locked 0 or 1 time.
+// So you don't need to worry about the race condition
+func GetConsumerConfig() ConsumerConfig {
+	if consumerConfig == nil {
+		if consumerConfig == nil {
+			return ConsumerConfig{}
+		}
+	}
+	return *consumerConfig
+}
 func loadProviderConfig() {
 	if providerConfig == nil {
 		logger.Warnf("providerConfig is nil!")

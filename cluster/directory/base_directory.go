@@ -32,3 +32,8 @@ func (dir *BaseDirectory) Destroy(doDestroy func()) {
 		dir.mutex.Unlock()
 	}
 }
+
+// GetDirectoryUrl Get URL instance
+func (dir *BaseDirectory) GetDirectoryUrl() *common.URL {
+	return dir.url
+}

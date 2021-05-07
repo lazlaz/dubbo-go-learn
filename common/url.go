@@ -38,6 +38,8 @@ var (
 	DubboNodes = [...]string{"consumers", "configurators", "routers", "providers"}
 	// DubboRole Dubbo service role
 	DubboRole = [...]string{"consumer", "", "routers", "provider"}
+	// CompareURLEqualFunc compare two url is equal
+	compareURLEqualFunc CompareURLEqualFunc
 )
 
 // nolint
@@ -467,6 +469,12 @@ func (c *URL) GetMethodParamInt64(method string, key string, d int64) int64 {
 		return c.GetParamInt(key, d)
 	}
 	return r
+}
+
+type CompareURLEqualFunc func(l *URL, r *URL, excludeParam ...string) bool
+
+func GetCompareURLEqualFunc() CompareURLEqualFunc {
+	return compareURLEqualFunc
 }
 
 // GetMethodParamInt gets int method param
