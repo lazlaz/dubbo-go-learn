@@ -76,6 +76,37 @@ type Options struct {
 	ConnectTimeout time.Duration
 }
 
+// NewRequest aims to create Request.
+// The ID is auto increase.
+func NewRequest(version string) *Request {
+	return &Request{
+		ID:      SequenceId(),
+		Version: version,
+	}
+}
+
+// NewPendingResponse aims to create PendingResponse.
+// Id is always from ID of Request
+func NewPendingResponse(id int64) *PendingResponse {
+	return &PendingResponse{
+		seq:      id,
+		start:    time.Now(),
+		response: &Response{},
+		Done:     make(chan struct{}),
+	}
+}
+
+// store response into map
+func AddPendingResponse(pr *PendingResponse) {
+	pendingResponses.Store(SequenceType(pr.seq), pr)
+}
+
+func SequenceId() int64 {
+	// increse 2 for every request as the same before.
+	// We expect that the request from client to server, the requestId is even; but from server to client, the requestId is odd.
+	return sequence.Add(2)
+}
+
 //AsyncCallbackResponse async response for dubbo
 type AsyncCallbackResponse struct {
 	common.CallbackResponse

@@ -130,12 +130,52 @@ func (c *Client) Close() {
 		p.close()
 	}
 }
-func (Client) Request(request *remoting.Request, timeout time.Duration, response *remoting.PendingResponse) error {
-	panic("implement me")
+
+func (c *Client) transfer(session getty.Session, request *remoting.Request, timeout time.Duration) (int, int, error) {
+	totalLen, sendLen, err := session.WritePkg(request, timeout)
+	return totalLen, sendLen, perrors.WithStack(err)
 }
 
-func (Client) IsAvailable() bool {
-	panic("implement me")
+func (c *Client) Request(request *remoting.Request, timeout time.Duration, response *remoting.PendingResponse) error {
+	_, session, err := c.selectSession(c.addr)
+	if err != nil {
+		return perrors.WithStack(err)
+	}
+	if session == nil {
+		return errSessionNotExist
+	}
+	var (
+		totalLen int
+		sendLen  int
+	)
+	if totalLen, sendLen, err = c.transfer(session, request, timeout); err != nil {
+		if sendLen != 0 && totalLen != sendLen {
+			logger.Warnf("start to close the session at request because %d of %d bytes data is sent success. err:%+v", sendLen, totalLen, err)
+			go c.Close()
+		}
+		return perrors.WithStack(err)
+	}
+
+	if !request.TwoWay || response.Callback != nil {
+		return nil
+	}
+
+	select {
+	case <-getty.GetTimeWheel().After(timeout):
+		return perrors.WithStack(errClientReadTimeout)
+	case <-response.Done:
+		err = response.Err
+	}
+
+	return perrors.WithStack(err)
+}
+
+// isAvailable returns true if the connection is available, or it can be re-established.
+func (c *Client) IsAvailable() bool {
+	client, _, err := c.selectSession(c.addr)
+	return err == nil &&
+		// defensive check
+		client != nil
 }
 
 // create client

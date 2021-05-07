@@ -7,7 +7,6 @@ import (
 	"github.com/laz/dubbo-go/common/extension"
 	"github.com/laz/dubbo-go/filter"
 	"github.com/laz/dubbo-go/protocol"
-	"strings"
 )
 
 const (
@@ -58,20 +57,21 @@ func GetProtocol() protocol.Protocol {
 
 //调用链，原型链模式
 func buildInvokerChain(invoker protocol.Invoker, key string) protocol.Invoker {
-	filterName := invoker.GetUrl().GetParam(key, "")
-	if filterName == "" {
-		return invoker
-	}
-	filterNames := strings.Split(filterName, ",")
-
-	// The order of filters is from left to right, so loading from right to left
-	next := invoker
-	for i := len(filterNames) - 1; i >= 0; i-- {
-		flt := extension.GetFilter(strings.TrimSpace(filterNames[i]))
-		fi := &FilterInvoker{next: next, invoker: invoker, filter: flt}
-		next = fi
-	}
-	return next
+	//filterName := invoker.GetUrl().GetParam(key, "")
+	//if filterName == "" {
+	//	return invoker
+	//}
+	//filterNames := strings.Split(filterName, ",")
+	//
+	//// The order of filters is from left to right, so loading from right to left
+	//next := invoker
+	//for i := len(filterNames) - 1; i >= 0; i-- {
+	//	flt := extension.GetFilter(strings.TrimSpace(filterNames[i]))
+	//	fi := &FilterInvoker{next: next, invoker: invoker, filter: flt}
+	//	next = fi
+	//}
+	//return next
+	return invoker
 }
 
 // FilterInvoker defines invoker and filter

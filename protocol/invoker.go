@@ -4,6 +4,9 @@ import (
 	"context"
 	"github.com/laz/dubbo-go/common"
 	"github.com/laz/dubbo-go/common/logger"
+)
+import (
+	perrors "github.com/pkg/errors"
 	uatomic "go.uber.org/atomic"
 )
 
@@ -15,6 +18,15 @@ type Invoker interface {
 	// Invoke the invocation and return result.
 	Invoke(context.Context, Invocation) Result
 }
+
+var (
+	// ErrClientClosed means client has clossed.
+	ErrClientClosed = perrors.New("remoting client has closed")
+	// ErrNoReply
+	ErrNoReply = perrors.New("request need @response")
+	// ErrDestroyedInvoker
+	ErrDestroyedInvoker = perrors.New("request Destroyed invoker")
+)
 
 // BaseInvoker provides default invoker implement
 type BaseInvoker struct {

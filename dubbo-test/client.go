@@ -29,7 +29,7 @@ func init() {
 
 func main() {
 	config.Load()
-	time.Sleep(30 * time.Second)
+	time.Sleep(3 * time.Second)
 
 	gxlog.CInfo("\n\n\nstart to test dubbo")
 	user := &pkg.User{}

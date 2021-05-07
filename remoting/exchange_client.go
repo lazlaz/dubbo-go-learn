@@ -4,6 +4,7 @@ import (
 	"errors"
 	"github.com/laz/dubbo-go/common"
 	"github.com/laz/dubbo-go/common/logger"
+	"github.com/laz/dubbo-go/protocol"
 	"time"
 )
 import (
@@ -74,5 +75,81 @@ func (cl *ExchangeClient) doInit(url *common.URL) error {
 	}
 	//FIXME atomic operation
 	cl.init = true
+	return nil
+}
+
+// async two way request
+func (client *ExchangeClient) AsyncRequest(invocation *protocol.Invocation, url *common.URL, timeout time.Duration,
+	callback common.AsyncCallback, result *protocol.RPCResult) error {
+	if er := client.doInit(url); er != nil {
+		return er
+	}
+	request := NewRequest("2.0.2")
+	request.Data = invocation
+	request.Event = false
+	request.TwoWay = true
+
+	rsp := NewPendingResponse(request.ID)
+	rsp.response = NewResponse(request.ID, "2.0.2")
+	rsp.Callback = callback
+	rsp.Reply = (*invocation).Reply()
+	AddPendingResponse(rsp)
+
+	err := client.client.Request(request, timeout, rsp)
+	if err != nil {
+		result.Err = err
+		return err
+	}
+	result.Rest = rsp.response
+	return nil
+}
+
+// oneway request
+func (client *ExchangeClient) Send(invocation *protocol.Invocation, url *common.URL, timeout time.Duration) error {
+	if er := client.doInit(url); er != nil {
+		return er
+	}
+	request := NewRequest("2.0.2")
+	request.Data = invocation
+	request.Event = false
+	request.TwoWay = false
+
+	rsp := NewPendingResponse(request.ID)
+	rsp.response = NewResponse(request.ID, "2.0.2")
+
+	err := client.client.Request(request, timeout, rsp)
+	if err != nil {
+		return err
+	}
+	return nil
+}
+
+// two way request
+func (client *ExchangeClient) Request(invocation *protocol.Invocation, url *common.URL, timeout time.Duration,
+	result *protocol.RPCResult) error {
+	if er := client.doInit(url); er != nil {
+		return er
+	}
+	request := NewRequest("2.0.2")
+	request.Data = invocation
+	request.Event = false
+	request.TwoWay = true
+
+	rsp := NewPendingResponse(request.ID)
+	rsp.response = NewResponse(request.ID, "2.0.2")
+	rsp.Reply = (*invocation).Reply()
+	AddPendingResponse(rsp)
+
+	err := client.client.Request(request, timeout, rsp)
+	// request error
+	if err != nil {
+		result.Err = err
+		return err
+	}
+	if resultTmp, ok := rsp.response.Result.(*protocol.RPCResult); ok {
+		result.Rest = resultTmp.Rest
+		result.Attrs = resultTmp.Attrs
+		result.Err = resultTmp.Err
+	}
 	return nil
 }
