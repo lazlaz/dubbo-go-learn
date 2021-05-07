@@ -11,6 +11,8 @@ import (
 )
 import (
 	_ "github.com/laz/dubbo-go/cluster/cluster_impl"
+	_ "github.com/laz/dubbo-go/cluster/loadbalance"
+	_ "github.com/laz/dubbo-go/common/proxy/proxy_factory"
 	_ "github.com/laz/dubbo-go/protocol/dubbo"
 	_ "github.com/laz/dubbo-go/registry/directory"
 	_ "github.com/laz/dubbo-go/registry/nacos"

@@ -10,6 +10,10 @@ const (
 	ECHO                      = "$echo"
 )
 const (
+	DEFAULT_WEIGHT = 100     //
+	DEFAULT_WARMUP = 10 * 60 // in java here is 10*60*1000 because of System.currentTimeMillis() is measured in milliseconds & in go time.Unix() is second
+)
+const (
 	CONFIGURATORS_CATEGORY             = "configurators"
 	ROUTER_CATEGORY                    = "category"
 	DEFAULT_CATEGORY                   = PROVIDER_CATEGORY

@@ -6,6 +6,7 @@ import (
 	gxset "github.com/dubbogo/gost/container/set"
 	"github.com/laz/dubbo-go/common/constant"
 	"github.com/laz/dubbo-go/common/logger"
+	"math"
 	"net"
 	"net/url"
 	"strconv"
@@ -448,6 +449,48 @@ func mergeNormalParam(params url.Values, referenceUrl *URL, paramKeys []string) 
 		})
 	}
 	return methodConfigMergeFcn
+}
+
+// GetParamInt gets int64 value by @key
+func (c *URL) GetParamInt(key string, d int64) int64 {
+	r, err := strconv.ParseInt(c.GetParam(key, ""), 10, 64)
+	if err != nil {
+		return d
+	}
+	return r
+}
+
+// GetMethodParamInt64 gets int64 method param
+func (c *URL) GetMethodParamInt64(method string, key string, d int64) int64 {
+	r := c.GetMethodParamInt(method, key, math.MinInt64)
+	if r == math.MinInt64 {
+		return c.GetParamInt(key, d)
+	}
+	return r
+}
+
+// GetMethodParamInt gets int method param
+func (c *URL) GetMethodParamInt(method string, key string, d int64) int64 {
+	r, err := strconv.ParseInt(c.GetParam("methods."+method+"."+key, ""), 10, 64)
+	if err != nil {
+		return d
+	}
+	return r
+}
+
+// GetMethodParamBool judge whether @method param exists or not
+func (c *URL) GetMethodParamBool(method string, key string, d bool) bool {
+	r := c.GetParamBool("methods."+method+"."+key, d)
+	return r
+}
+
+// GetMethodParam gets method param
+func (c *URL) GetMethodParam(method string, key string, d string) string {
+	r := c.GetParam("methods."+method+"."+key, "")
+	if r == "" {
+		r = d
+	}
+	return r
 }
 
 // ReplaceParams will replace the URL.params

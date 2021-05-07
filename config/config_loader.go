@@ -7,6 +7,7 @@ import (
 	"github.com/laz/dubbo-go/common/logger"
 	"log"
 	"os"
+	"time"
 )
 
 var (
@@ -15,6 +16,7 @@ var (
 	baseConfig     *BaseConfig
 	confRouterFile string
 	sslEnabled     = false
+	maxWait        = 3
 )
 
 func init() {
@@ -76,6 +78,36 @@ func loadConsumerConfig() {
 		ref.id = key
 		ref.Refer(rpcService)
 		ref.Implement(rpcService)
+	}
+
+	// wait for invoker is available, if wait over default 3s, then panic
+	var count int
+	for {
+		checkok := true
+		for _, refconfig := range consumerConfig.References {
+			if (refconfig.Check != nil && *refconfig.Check) ||
+				(refconfig.Check == nil && consumerConfig.Check != nil && *consumerConfig.Check) ||
+				(refconfig.Check == nil && consumerConfig.Check == nil) { // default to true
+
+				if refconfig.invoker != nil && !refconfig.invoker.IsAvailable() {
+					checkok = false
+					count++
+					if count > maxWait {
+						errMsg := fmt.Sprintf("Failed to check the status of the service %v. No provider available for the service to the consumer use dubbo version %v", refconfig.InterfaceName, constant.Version)
+						logger.Error(errMsg)
+						panic(errMsg)
+					}
+					time.Sleep(time.Second * 1)
+					break
+				}
+				if refconfig.invoker == nil {
+					logger.Warnf("The interface %s invoker not exist, may you should check your interface config.", refconfig.InterfaceName)
+				}
+			}
+		}
+		if checkok {
+			break
+		}
 	}
 }
 

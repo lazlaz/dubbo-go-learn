@@ -229,3 +229,15 @@ func WithInvoker(invoker protocol.Invoker) option {
 		invo.invoker = invoker
 	}
 }
+
+// NewRPCInvocationWithOptions creates a RPC invocation with @opts.
+func NewRPCInvocationWithOptions(opts ...option) *RPCInvocation {
+	invo := &RPCInvocation{}
+	for _, opt := range opts {
+		opt(invo)
+	}
+	if invo.attributes == nil {
+		invo.attributes = make(map[string]interface{})
+	}
+	return invo
+}

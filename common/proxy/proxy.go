@@ -1,9 +1,18 @@
 package proxy
 
 import (
+	"context"
+	"github.com/apache/dubbo-go-hessian2/java_exception"
 	"github.com/laz/dubbo-go/common"
+	"github.com/laz/dubbo-go/common/constant"
+	"github.com/laz/dubbo-go/common/logger"
 	"github.com/laz/dubbo-go/protocol"
+	invocation_impl "github.com/laz/dubbo-go/protocol/invocation"
+	"reflect"
 	"sync"
+)
+import (
+	perrors "github.com/pkg/errors"
 )
 
 type (
@@ -11,6 +20,10 @@ type (
 	ProxyOption func(p *Proxy)
 	// ImplementFunc function for proxy impl of RPCService functions
 	ImplementFunc func(p *Proxy, v common.RPCService)
+)
+
+var (
+	typError = reflect.Zero(reflect.TypeOf((*error)(nil)).Elem()).Type()
 )
 
 // nolint
@@ -51,7 +64,154 @@ func WithProxyImplementFunc(f ImplementFunc) ProxyOption {
 
 // DefaultProxyImplementFunc the default function for proxy impl
 func DefaultProxyImplementFunc(p *Proxy, v common.RPCService) {
+	// check parameters, incoming interface must be a elem's pointer.
+	valueOf := reflect.ValueOf(v)
+	logger.Debugf("[Implement] reflect.TypeOf: %s", valueOf.String())
 
+	valueOfElem := valueOf.Elem()
+	typeOf := valueOfElem.Type()
+
+	// check incoming interface, incoming interface's elem must be a struct.
+	if typeOf.Kind() != reflect.Struct {
+		logger.Errorf("%s must be a struct ptr", valueOf.String())
+		return
+	}
+
+	makeDubboCallProxy := func(methodName string, outs []reflect.Type) func(in []reflect.Value) []reflect.Value {
+		return func(in []reflect.Value) []reflect.Value {
+			var (
+				err    error
+				inv    *invocation_impl.RPCInvocation
+				inIArr []interface{}
+				inVArr []reflect.Value
+				reply  reflect.Value
+			)
+			if methodName == "Echo" {
+				methodName = "$echo"
+			}
+
+			if len(outs) == 2 {
+				if outs[0].Kind() == reflect.Ptr {
+					reply = reflect.New(outs[0].Elem())
+				} else {
+					reply = reflect.New(outs[0])
+				}
+			} else {
+				reply = valueOf
+			}
+
+			start := 0
+			end := len(in)
+			invCtx := context.Background()
+			if end > 0 {
+				if in[0].Type().String() == "context.Context" {
+					if !in[0].IsNil() {
+						// the user declared context as method's parameter
+						invCtx = in[0].Interface().(context.Context)
+					}
+					start += 1
+				}
+				if len(outs) == 1 && in[end-1].Type().Kind() == reflect.Ptr {
+					end -= 1
+					reply = in[len(in)-1]
+				}
+			}
+
+			if end-start <= 0 {
+				inIArr = []interface{}{}
+				inVArr = []reflect.Value{}
+			} else if v, ok := in[start].Interface().([]interface{}); ok && end-start == 1 {
+				inIArr = v
+				inVArr = []reflect.Value{in[start]}
+			} else {
+				inIArr = make([]interface{}, end-start)
+				inVArr = make([]reflect.Value, end-start)
+				index := 0
+				for i := start; i < end; i++ {
+					inIArr[index] = in[i].Interface()
+					inVArr[index] = in[i]
+					index++
+				}
+			}
+
+			inv = invocation_impl.NewRPCInvocationWithOptions(invocation_impl.WithMethodName(methodName),
+				invocation_impl.WithArguments(inIArr), invocation_impl.WithReply(reply.Interface()),
+				invocation_impl.WithCallBack(p.callback), invocation_impl.WithParameterValues(inVArr))
+
+			for k, value := range p.attachments {
+				inv.SetAttachments(k, value)
+			}
+
+			// add user setAttachment. It is compatibility with previous versions.
+			atm := invCtx.Value(constant.AttachmentKey)
+			if m, ok := atm.(map[string]string); ok {
+				for k, value := range m {
+					inv.SetAttachments(k, value)
+				}
+			} else if m2, ok2 := atm.(map[string]interface{}); ok2 {
+				// it is support to transfer map[string]interface{}. It refers to dubbo-java 2.7.
+				for k, value := range m2 {
+					inv.SetAttachments(k, value)
+				}
+			}
+
+			result := p.invoke.Invoke(invCtx, inv)
+			err = result.Error()
+			if err != nil {
+				// the cause reason
+				err = perrors.Cause(err)
+				// if some error happened, it should be log some info in the separate file.
+				if throwabler, ok := err.(java_exception.Throwabler); ok {
+					logger.Warnf("invoke service throw exception: %v , stackTraceElements: %v", err.Error(), throwabler.GetStackTrace())
+				} else {
+					logger.Warnf("result err: %v", err)
+				}
+			} else {
+				logger.Debugf("[makeDubboCallProxy] result: %v, err: %v", result.Result(), err)
+			}
+			if len(outs) == 1 {
+				return []reflect.Value{reflect.ValueOf(&err).Elem()}
+			}
+			if len(outs) == 2 && outs[0].Kind() != reflect.Ptr {
+				return []reflect.Value{reply.Elem(), reflect.ValueOf(&err).Elem()}
+			}
+			return []reflect.Value{reply, reflect.ValueOf(&err).Elem()}
+		}
+	}
+
+	numField := valueOfElem.NumField()
+	for i := 0; i < numField; i++ {
+		t := typeOf.Field(i)
+		methodName := t.Tag.Get("dubbo")
+		if methodName == "" {
+			methodName = t.Name
+		}
+		f := valueOfElem.Field(i)
+		if f.Kind() == reflect.Func && f.IsValid() && f.CanSet() {
+			outNum := t.Type.NumOut()
+
+			if outNum != 1 && outNum != 2 {
+				logger.Warnf("method %s of mtype %v has wrong number of in out parameters %d; needs exactly 1/2",
+					t.Name, t.Type.String(), outNum)
+				continue
+			}
+
+			// The latest return type of the method must be error.
+			if returnType := t.Type.Out(outNum - 1); returnType != typError {
+				logger.Warnf("the latest return type %s of method %q is not error", returnType, t.Name)
+				continue
+			}
+
+			var funcOuts = make([]reflect.Type, outNum)
+			for i := 0; i < outNum; i++ {
+				funcOuts[i] = t.Type.Out(i)
+			}
+
+			// do method proxy here:
+			f.Set(reflect.MakeFunc(f.Type(), makeDubboCallProxy(methodName, funcOuts)))
+			logger.Debugf("set method [%s]", methodName)
+		}
+	}
 }
 func (p *Proxy) Implement(v common.RPCService) {
 	p.once.Do(func() {
