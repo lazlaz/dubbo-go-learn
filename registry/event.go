@@ -1,6 +1,7 @@
 package registry
 
 import (
+	"fmt"
 	"github.com/laz/dubbo-go/common"
 	"github.com/laz/dubbo-go/remoting"
 )
@@ -25,6 +26,11 @@ func (e *ServiceEvent) Update(url *common.URL) {
 // If the serviceEvent is updated, then it don't need merge url again.
 func (e *ServiceEvent) Updated() bool {
 	return e.updated
+}
+
+// String return the description of event
+func (e *ServiceEvent) String() string {
+	return fmt.Sprintf("ServiceEvent{Action{%s}, Path{%s}, Key{%s}}", e.Action, e.Service, e.key)
 }
 
 // Key() generate the key for service.Key(). It is cached once.

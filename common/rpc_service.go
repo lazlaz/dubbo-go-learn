@@ -22,6 +22,9 @@ type RPCService interface {
 	Reference() string
 }
 
+// AsyncCallback async callback method
+type AsyncCallback func(response CallbackResponse)
+
 // Service is description of service
 type Service struct {
 	name     string

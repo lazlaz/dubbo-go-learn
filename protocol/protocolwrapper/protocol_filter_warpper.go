@@ -36,7 +36,14 @@ func (pfw *ProtocolFilterWrapper) Export(invoker protocol.Invoker) protocol.Expo
 
 // Refer a remote service
 func (pfw *ProtocolFilterWrapper) Refer(url *common.URL) protocol.Invoker {
-	return nil
+	if pfw.protocol == nil {
+		pfw.protocol = extension.GetProtocol(url.Protocol)
+	}
+	invoker := pfw.protocol.Refer(url)
+	if invoker == nil {
+		return nil
+	}
+	return buildInvokerChain(invoker, constant.REFERENCE_FILTER_KEY)
 }
 
 // Destroy will destroy all invoker and exporter.

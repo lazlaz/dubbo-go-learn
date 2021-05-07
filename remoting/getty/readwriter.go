@@ -15,8 +15,18 @@ type RpcServerPackageHandler struct {
 	server *Server
 }
 
+// RpcClientPackageHandler Read data from server and Write data to server
+type RpcClientPackageHandler struct {
+	client *Client
+}
+
 func NewRpcServerPackageHandler(server *Server) *RpcServerPackageHandler {
 	return &RpcServerPackageHandler{server: server}
+}
+
+// NewRpcClientPackageHandler create a RpcClientPackageHandler
+func NewRpcClientPackageHandler(client *Client) *RpcClientPackageHandler {
+	return &RpcClientPackageHandler{client: client}
 }
 
 // Read data from client. if the package size from client is larger than 4096 byte, client will read 4096 byte
@@ -62,4 +72,48 @@ func (p *RpcServerPackageHandler) Write(ss getty.Session, pkg interface{}) ([]by
 	logger.Errorf("illegal pkg:%+v\n, it is %+v", pkg, reflect.TypeOf(pkg))
 	return nil, perrors.New("invalid rpc response")
 
+}
+
+// Read data from server. if the package size from server is larger than 4096 byte, server will read 4096 byte
+// and send to client each time. the Read can assemble it.
+func (p *RpcClientPackageHandler) Read(ss getty.Session, data []byte) (interface{}, int, error) {
+	resp, length, err := (p.client.codec).Decode(data)
+	//err := pkg.Unmarshal(buf, p.client)
+	if err != nil {
+		if errors.Is(err, hessian.ErrHeaderNotEnough) || errors.Is(err, hessian.ErrBodyNotEnough) {
+			return nil, 0, nil
+		}
+
+		logger.Errorf("pkg.Unmarshal(ss:%+v, len(@data):%d) = error:%+v", ss, len(data), err)
+
+		return nil, length, err
+	}
+
+	return resp, length, nil
+}
+
+// Write send the data to server
+func (p *RpcClientPackageHandler) Write(ss getty.Session, pkg interface{}) ([]byte, error) {
+	req, ok := pkg.(*remoting.Request)
+	if ok {
+		buf, err := (p.client.codec).EncodeRequest(req)
+		if err != nil {
+			logger.Warnf("binary.Write(req{%#v}) = err{%#v}", req, perrors.WithStack(err))
+			return nil, perrors.WithStack(err)
+		}
+		return buf.Bytes(), nil
+	}
+
+	res, ok := pkg.(*remoting.Response)
+	if ok {
+		buf, err := (p.client.codec).EncodeResponse(res)
+		if err != nil {
+			logger.Warnf("binary.Write(res{%#v}) = err{%#v}", req, perrors.WithStack(err))
+			return nil, perrors.WithStack(err)
+		}
+		return buf.Bytes(), nil
+	}
+
+	logger.Errorf("illegal pkg:%+v\n", pkg)
+	return nil, perrors.New("invalid rpc request")
 }

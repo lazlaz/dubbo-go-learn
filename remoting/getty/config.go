@@ -52,7 +52,95 @@ type (
 		// session tcp parameters
 		GettySessionParam GettySessionParam `required:"true" yaml:"getty_session_param" json:"getty_session_param,omitempty"`
 	}
+
+	// ClientConfig holds supported types by the multiconfig package
+	ClientConfig struct {
+		ReconnectInterval int `default:"0" yaml:"reconnect_interval" json:"reconnect_interval,omitempty"`
+
+		// session pool
+		ConnectionNum int `default:"16" yaml:"connection_number" json:"connection_number,omitempty"`
+
+		// heartbeat
+		HeartbeatPeriod string `default:"60s" yaml:"heartbeat_period" json:"heartbeat_period,omitempty"`
+		heartbeatPeriod time.Duration
+
+		// heartbeat timeout
+		HeartbeatTimeout string `default:"5s" yaml:"heartbeat_timeout" json:"heartbeat_timeout,omitempty"`
+		heartbeatTimeout time.Duration
+
+		// session
+		SessionTimeout string `default:"60s" yaml:"session_timeout" json:"session_timeout,omitempty"`
+		sessionTimeout time.Duration
+
+		// Connection Pool
+		PoolSize int `default:"2" yaml:"pool_size" json:"pool_size,omitempty"`
+		PoolTTL  int `default:"180" yaml:"pool_ttl" json:"pool_ttl,omitempty"`
+
+		// grpool
+		GrPoolSize  int `default:"0" yaml:"gr_pool_size" json:"gr_pool_size,omitempty"`
+		QueueLen    int `default:"0" yaml:"queue_len" json:"queue_len,omitempty"`
+		QueueNumber int `default:"0" yaml:"queue_number" json:"queue_number,omitempty"`
+
+		// session tcp parameters
+		GettySessionParam GettySessionParam `required:"true" yaml:"getty_session_param" json:"getty_session_param,omitempty"`
+	}
 )
+
+// GetDefaultClientConfig gets client default configuration
+func GetDefaultClientConfig() ClientConfig {
+	return ClientConfig{
+		ReconnectInterval: 0,
+		ConnectionNum:     16,
+		HeartbeatPeriod:   "30s",
+		SessionTimeout:    "180s",
+		PoolSize:          4,
+		PoolTTL:           600,
+		GrPoolSize:        200,
+		QueueLen:          64,
+		QueueNumber:       10,
+		GettySessionParam: GettySessionParam{
+			CompressEncoding: false,
+			TcpNoDelay:       true,
+			TcpKeepAlive:     true,
+			KeepAlivePeriod:  "180s",
+			TcpRBufSize:      262144,
+			TcpWBufSize:      65536,
+			PkgWQSize:        512,
+			TcpReadTimeout:   "1s",
+			TcpWriteTimeout:  "5s",
+			WaitTimeout:      "1s",
+			MaxMsgLen:        102400,
+			SessionName:      "client",
+		}}
+}
+
+// CheckValidity confirm client params.
+func (c *ClientConfig) CheckValidity() error {
+	var err error
+
+	c.ReconnectInterval = c.ReconnectInterval * 1e6
+
+	if c.heartbeatPeriod, err = time.ParseDuration(c.HeartbeatPeriod); err != nil {
+		return perrors.WithMessagef(err, "time.ParseDuration(HeartbeatPeroid{%#v})", c.HeartbeatPeriod)
+	}
+
+	if c.heartbeatPeriod >= time.Duration(config.MaxWheelTimeSpan) {
+		return perrors.WithMessagef(err, "heartbeat_period %s should be less than %s",
+			c.HeartbeatPeriod, time.Duration(config.MaxWheelTimeSpan))
+	}
+
+	if len(c.HeartbeatTimeout) == 0 {
+		c.heartbeatTimeout = 60 * time.Second
+	} else if c.heartbeatTimeout, err = time.ParseDuration(c.HeartbeatTimeout); err != nil {
+		return perrors.WithMessagef(err, "time.ParseDuration(HeartbeatTimeout{%#v})", c.HeartbeatTimeout)
+	}
+
+	if c.sessionTimeout, err = time.ParseDuration(c.SessionTimeout); err != nil {
+		return perrors.WithMessagef(err, "time.ParseDuration(SessionTimeout{%#v})", c.SessionTimeout)
+	}
+
+	return perrors.WithStack(c.GettySessionParam.CheckValidity())
+}
 
 // GetDefaultServerConfig gets server default configuration
 func GetDefaultServerConfig() ServerConfig {

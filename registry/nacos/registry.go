@@ -63,7 +63,44 @@ func (nr *nacosRegistry) UnRegister(conf *common.URL) error {
 
 // subscribe from registry
 func (nr *nacosRegistry) Subscribe(url *common.URL, notifyListener registry.NotifyListener) error {
-	return nil
+	role, _ := strconv.Atoi(nr.URL.GetParam(constant.ROLE_KEY, ""))
+	if role != common.CONSUMER {
+		return nil
+	}
+
+	for {
+		if !nr.IsAvailable() {
+			logger.Warnf("event listener game over.")
+			return perrors.New("nacosRegistry is not available.")
+		}
+
+		listener, err := nr.subscribe(url)
+		if err != nil {
+			if !nr.IsAvailable() {
+				logger.Warnf("event listener game over.")
+				return err
+			}
+			logger.Warnf("getListener() = err:%v", perrors.WithStack(err))
+			time.Sleep(time.Duration(RegistryConnDelay) * time.Second)
+			continue
+		}
+
+		for {
+			serviceEvent, err := listener.Next()
+			if err != nil {
+				logger.Warnf("Selector.watch() = error{%v}", perrors.WithStack(err))
+				listener.Close()
+				return err
+			}
+
+			logger.Infof("update begin, service event: %v", serviceEvent.String())
+			notifyListener.Notify(serviceEvent)
+		}
+
+	}
+}
+func (nr *nacosRegistry) subscribe(conf *common.URL) (registry.Listener, error) {
+	return NewNacosListener(conf, nr.namingClient)
 }
 
 // UnSubscribe :

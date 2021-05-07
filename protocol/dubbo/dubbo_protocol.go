@@ -3,7 +3,9 @@ package dubbo
 import (
 	"context"
 	"fmt"
+	"github.com/laz/dubbo-go/config"
 	"github.com/laz/dubbo-go/remoting/getty"
+	"time"
 
 	"github.com/laz/dubbo-go/common"
 	"github.com/laz/dubbo-go/common/constant"
@@ -29,6 +31,12 @@ func init() {
 
 var (
 	dubboProtocol *DubboProtocol
+)
+var (
+	// Make the connection can be shared.
+	// It will create one connection for one address (ip+port)
+	exchangeClientMap = new(sync.Map)
+	exchangeLock      = new(sync.Map)
 )
 
 // It support dubbo protocol. It implements Protocol interface for dubbo protocol.
@@ -137,9 +145,61 @@ func NewDubboExporter(key string, invoker protocol.Invoker, exporterMap *sync.Ma
 	}
 }
 
+func getExchangeClient(url *common.URL) *remoting.ExchangeClient {
+	clientTmp, ok := exchangeClientMap.Load(url.Location)
+	if !ok {
+		var exchangeClientTmp *remoting.ExchangeClient
+		func() {
+			// lock for NewExchangeClient and store into map.
+			_, loaded := exchangeLock.LoadOrStore(url.Location, 0x00)
+			// unlock
+			defer exchangeLock.Delete(url.Location)
+			if loaded {
+				// retry for 5 times.
+				for i := 0; i < 5; i++ {
+					if clientTmp, ok = exchangeClientMap.Load(url.Location); ok {
+						break
+					} else {
+						// if cannot get, sleep a while.
+						time.Sleep(time.Duration(i*100) * time.Millisecond)
+					}
+				}
+				return
+			}
+			// new ExchangeClient
+			exchangeClientTmp = remoting.NewExchangeClient(url, getty.NewClient(getty.Options{
+				ConnectTimeout: config.GetConsumerConfig().ConnectTimeout,
+				RequestTimeout: config.GetConsumerConfig().RequestTimeout,
+			}), config.GetConsumerConfig().ConnectTimeout, false)
+			// input store
+			if exchangeClientTmp != nil {
+				exchangeClientMap.Store(url.Location, exchangeClientTmp)
+			}
+		}()
+		if exchangeClientTmp != nil {
+			return exchangeClientTmp
+		}
+	}
+	// cannot dial the server
+	if clientTmp == nil {
+		return nil
+	}
+	exchangeClient := clientTmp.(*remoting.ExchangeClient)
+	exchangeClient.IncreaseActiveNumber()
+	return exchangeClient
+}
+
 // Refer create dubbo service reference.
 func (dp *DubboProtocol) Refer(url *common.URL) protocol.Invoker {
-	return nil
+	exchangeClient := getExchangeClient(url)
+	if exchangeClient == nil {
+		logger.Warnf("can't dial the server: %+v", url.Location)
+		return nil
+	}
+	invoker := NewDubboInvoker(url, exchangeClient)
+	dp.SetInvokers(invoker)
+	logger.Infof("Refer service: %s", url.String())
+	return invoker
 }
 
 // Destroy destroy dubbo service.

@@ -39,6 +39,11 @@ func NewBaseProtocol() BaseProtocol {
 	}
 }
 
+// SetInvokers sets invoker into local memory
+func (bp *BaseProtocol) SetInvokers(invoker Invoker) {
+	bp.invokers = append(bp.invokers, invoker)
+}
+
 // ExporterMap gets exporter map.
 func (bp *BaseProtocol) ExporterMap() *sync.Map {
 	return bp.exporterMap
