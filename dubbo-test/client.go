@@ -9,6 +9,9 @@ import (
 	"os"
 	"time"
 )
+import (
+	_ "github.com/laz/dubbo-go/registry/protocol"
+)
 
 var userProvider = new(pkg.UserProvider)
 

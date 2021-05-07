@@ -169,7 +169,39 @@ func (proto *registryProtocol) Destroy() {
 
 // Refer provider service from registry center
 func (proto *registryProtocol) Refer(url *common.URL) protocol.Invoker {
-	return nil
+	var registryUrl = url
+	var serviceUrl = registryUrl.SubURL
+	if registryUrl.Protocol == constant.REGISTRY_PROTOCOL {
+		registryUrl.Protocol = registryUrl.GetParam(constant.REGISTRY_KEY, "")
+	}
+
+	var reg registry.Registry
+	if regI, loaded := proto.registries.Load(registryUrl.Key()); !loaded {
+		reg = getRegistry(registryUrl)
+		proto.registries.Store(registryUrl.Key(), reg)
+	} else {
+		reg = regI.(registry.Registry)
+	}
+
+	// new registry directory for store service url from registry
+	directory, err := extension.GetDefaultRegistryDirectory(registryUrl, reg)
+	if err != nil {
+		logger.Errorf("consumer service %v create registry directory error, error message is %s, and will return nil invoker!",
+			serviceUrl.String(), err.Error())
+		return nil
+	}
+
+	err = reg.Register(serviceUrl)
+	if err != nil {
+		logger.Errorf("consumer service %v register registry %v error, error message is %s",
+			serviceUrl.String(), registryUrl.String(), err.Error())
+	}
+
+	// new cluster invoker
+	cluster := extension.GetCluster(serviceUrl.GetParam(constant.CLUSTER_KEY, constant.DEFAULT_CLUSTER))
+	invoker := cluster.Join(directory)
+	proto.invokers = append(proto.invokers, invoker)
+	return invoker
 }
 func newRegistryProtocol() *registryProtocol {
 	return &registryProtocol{
