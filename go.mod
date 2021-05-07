@@ -7,6 +7,7 @@ require (
 	github.com/apache/dubbo-go-hessian2 v1.9.1
 	github.com/creasty/defaults v1.5.1
 	github.com/dubbogo/gost v1.10.1
+	github.com/gorilla/mux v1.8.0 // indirect
 	github.com/jinzhu/copier v0.0.0-20190625015134-976e0346caa8
 	github.com/nacos-group/nacos-sdk-go v1.0.7
 	github.com/opentracing/opentracing-go v1.2.0
