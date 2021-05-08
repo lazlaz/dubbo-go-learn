@@ -141,7 +141,6 @@ func DefaultProxyImplementFunc(p *Proxy, v common.RPCService) {
 			for k, value := range p.attachments {
 				inv.SetAttachments(k, value)
 			}
-
 			// add user setAttachment. It is compatibility with previous versions.
 			atm := invCtx.Value(constant.AttachmentKey)
 			if m, ok := atm.(map[string]string); ok {
