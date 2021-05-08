@@ -96,11 +96,23 @@ func NewPendingResponse(id int64) *PendingResponse {
 	}
 }
 
+// get response
+func GetPendingResponse(seq SequenceType) *PendingResponse {
+	if presp, ok := pendingResponses.Load(seq); ok {
+		return presp.(*PendingResponse)
+	}
+	return nil
+}
+
 // store response into map
 func AddPendingResponse(pr *PendingResponse) {
 	pendingResponses.Store(SequenceType(pr.seq), pr)
 }
 
+// the response is heartbeat
+func (response *Response) IsHeartbeat() bool {
+	return response.Event && response.Result == nil
+}
 func SequenceId() int64 {
 	// increse 2 for every request as the same before.
 	// We expect that the request from client to server, the requestId is even; but from server to client, the requestId is odd.
