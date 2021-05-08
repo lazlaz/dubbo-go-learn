@@ -2,12 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="3ab5e8cb-5c98-4577-9494-dfba3d8af65b" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/protocol/dubbo/impl/hessian.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/main.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/main_test.go" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/protocol/dubbo/impl/const.go" beforeDir="false" afterPath="$PROJECT_DIR$/protocol/dubbo/impl/const.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/protocol/dubbo/impl/package.go" beforeDir="false" afterPath="$PROJECT_DIR$/protocol/dubbo/impl/package.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/protocol/dubbo/impl/request.go" beforeDir="false" afterPath="$PROJECT_DIR$/protocol/dubbo/impl/request.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/protocol/dubbo/impl/response.go" beforeDir="false" afterPath="$PROJECT_DIR$/protocol/dubbo/impl/response.go" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -18,22 +15,82 @@
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/protocol/dubbo/dubbo_codec.go">
+        <entry file="file://$PROJECT_DIR$/protocol/dubbo/dubbo_invoker.go">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-257">
-              <caret line="188" column="35" selection-start-line="188" selection-start-column="35" selection-end-line="188" selection-end-column="35" />
-              <folding>
-                <element signature="e#15#144#0" expanded="true" />
-              </folding>
+            <state relative-caret-position="267">
+              <caret line="124" selection-start-line="124" selection-end-line="124" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/protocol/dubbo/impl/response.go">
+        <entry file="file://$PROJECT_DIR$/cluster/cluster_impl/failover_cluster_invoker.go">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="395">
-              <caret line="27" selection-start-line="27" selection-end-line="27" />
+            <state relative-caret-position="187">
+              <caret line="68" selection-start-line="68" selection-end-line="68" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/common/proxy/proxy.go">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="81">
+              <caret line="142" column="13" selection-start-line="142" selection-start-column="13" selection-end-line="142" selection-end-column="13" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/main_test.go">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="168">
+              <caret line="110" selection-start-line="110" selection-end-line="110" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/main.go">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="132">
+              <caret line="6" column="30" lean-forward="true" selection-start-line="6" selection-start-column="30" selection-end-line="6" selection-end-column="30" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://D:/Go/src/fmt/print.go">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="123">
+              <caret line="216" column="5" selection-start-line="216" selection-start-column="5" selection-end-line="216" selection-end-column="5" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/kownledge/five/demo1.go">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="176">
+              <caret line="14" column="69" lean-forward="true" selection-start-line="14" selection-start-column="69" selection-end-line="14" selection-end-column="69" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/remoting/exchange_client.go">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="249">
+              <caret line="153" selection-start-line="153" selection-end-line="153" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/remoting/getty/getty_client.go">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="293">
+              <caret line="169" selection-start-line="169" selection-end-line="169" />
             </state>
           </provider>
         </entry>
@@ -41,83 +98,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/remoting/exchange.go">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="167">
-              <caret line="104" column="1" selection-start-line="104" selection-start-column="1" selection-end-line="104" selection-end-column="1" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/protocol/dubbo/impl/codec.go">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="139">
-              <caret line="13" selection-start-line="13" selection-end-line="13" />
-              <folding>
-                <element signature="e#14#76#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/protocol/dubbo/impl/const.go">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="263">
-              <caret line="164" column="1" selection-start-line="164" selection-start-column="1" selection-end-line="164" selection-end-column="1" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/protocol/dubbo/impl/serialization.go">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="331">
-              <caret line="29" selection-start-line="29" selection-end-line="29" />
-              <folding>
-                <element signature="e#14#74#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/protocol/dubbo/impl/hessian.go">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="439">
-              <caret line="414" column="62" selection-start-line="414" selection-start-column="57" selection-end-line="414" selection-end-column="62" />
-              <folding>
-                <element signature="e#14#349#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/protocol/dubbo/impl/request.go">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="329">
-              <caret line="23" selection-start-line="23" selection-end-line="23" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/protocol/dubbo/impl/package.go">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="219">
-              <caret line="113" selection-start-line="113" selection-end-line="113" />
-              <folding>
-                <element signature="e#14#41#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/protocol/dubbo/impl/serialize.go">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="175">
-              <caret line="14" column="5" lean-forward="true" selection-start-line="14" selection-start-column="5" selection-end-line="14" selection-end-column="5" />
+            <state relative-caret-position="147">
+              <caret line="32" column="4" selection-start-line="32" selection-start-column="4" selection-end-line="32" selection-end-column="4" />
             </state>
           </provider>
         </entry>
@@ -168,10 +150,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/protocol/invocation/rpcinvocation.go" />
-        <option value="$PROJECT_DIR$/common/proxy/proxy.go" />
-        <option value="$PROJECT_DIR$/cluster/cluster_impl/failover_cluster_invoker.go" />
-        <option value="$PROJECT_DIR$/common/extension/loadbalance.go" />
         <option value="$PROJECT_DIR$/cluster/loadbalance.go" />
         <option value="$PROJECT_DIR$/cluster/loadbalance/random.go" />
         <option value="$PROJECT_DIR$/cluster/loadbalance/util.go" />
@@ -217,14 +195,18 @@
         <option value="$PROJECT_DIR$/protocol/dubbo/impl/package.go" />
         <option value="$PROJECT_DIR$/protocol/dubbo/impl/response.go" />
         <option value="$PROJECT_DIR$/protocol/dubbo/impl/request.go" />
-        <option value="$PROJECT_DIR$/protocol/dubbo/impl/hessian.go" />
         <option value="$PROJECT_DIR$/protocol/dubbo/impl/const.go" />
+        <option value="$PROJECT_DIR$/protocol/dubbo/impl/hessian.go" />
+        <option value="$PROJECT_DIR$/common/proxy/proxy.go" />
+        <option value="$PROJECT_DIR$/kownledge/test.go" />
+        <option value="$PROJECT_DIR$/main.go" />
+        <option value="$PROJECT_DIR$/main_test.go" />
       </list>
     </option>
   </component>
-  <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="-8" />
-    <option name="y" value="-8" />
+  <component name="ProjectFrameBounds">
+    <option name="x" value="336" />
+    <option name="y" value="116" />
     <option name="width" value="1400" />
     <option name="height" value="1010" />
   </component>
@@ -253,36 +235,7 @@
               <item name="dubbo-go-learn" type="b2602c69:ProjectViewProjectNode" />
               <item name="dubbo-go-learn" type="462c0819:PsiDirectoryNode" />
               <item name="kownledge" type="462c0819:PsiDirectoryNode" />
-              <item name="seven" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="dubbo-go-learn" type="b2602c69:ProjectViewProjectNode" />
-              <item name="dubbo-go-learn" type="462c0819:PsiDirectoryNode" />
-              <item name="protocol" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="dubbo-go-learn" type="b2602c69:ProjectViewProjectNode" />
-              <item name="dubbo-go-learn" type="462c0819:PsiDirectoryNode" />
-              <item name="protocol" type="462c0819:PsiDirectoryNode" />
-              <item name="dubbo" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="dubbo-go-learn" type="b2602c69:ProjectViewProjectNode" />
-              <item name="dubbo-go-learn" type="462c0819:PsiDirectoryNode" />
-              <item name="protocol" type="462c0819:PsiDirectoryNode" />
-              <item name="dubbo" type="462c0819:PsiDirectoryNode" />
-              <item name="impl" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="dubbo-go-learn" type="b2602c69:ProjectViewProjectNode" />
-              <item name="dubbo-go-learn" type="462c0819:PsiDirectoryNode" />
-              <item name="remoting" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="dubbo-go-learn" type="b2602c69:ProjectViewProjectNode" />
-              <item name="dubbo-go-learn" type="462c0819:PsiDirectoryNode" />
-              <item name="remoting" type="462c0819:PsiDirectoryNode" />
-              <item name="getty" type="462c0819:PsiDirectoryNode" />
+              <item name="five" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="dubbo-go-learn" type="b2602c69:ProjectViewProjectNode" />
@@ -291,13 +244,20 @@
             <path>
               <item name="dubbo-go-learn" type="b2602c69:ProjectViewProjectNode" />
               <item name="External Libraries" type="cb654da1:ExternalLibrariesNode" />
-              <item name="Go Modules &lt;github.com/laz/dubbo-go&gt;" type="20ee2d1f:SyntheticLibraryElementNode" />
+              <item name="Go SDK 1.13.4" type="20ee2d1f:SyntheticLibraryElementNode" />
             </path>
             <path>
               <item name="dubbo-go-learn" type="b2602c69:ProjectViewProjectNode" />
               <item name="External Libraries" type="cb654da1:ExternalLibrariesNode" />
-              <item name="Go Modules &lt;github.com/laz/dubbo-go&gt;" type="20ee2d1f:SyntheticLibraryElementNode" />
-              <item name="dubbo-getty@v1.4.3" type="462c0819:PsiDirectoryNode" />
+              <item name="Go SDK 1.13.4" type="20ee2d1f:SyntheticLibraryElementNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="dubbo-go-learn" type="b2602c69:ProjectViewProjectNode" />
+              <item name="External Libraries" type="cb654da1:ExternalLibrariesNode" />
+              <item name="Go SDK 1.13.4" type="20ee2d1f:SyntheticLibraryElementNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="testing" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -316,12 +276,15 @@
     <property name="go.gopath.indexing.explicitly.defined" value="true" />
     <property name="go.import.settings.migrated" value="true" />
     <property name="go.sdk.automatically.set" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/dubbo-test" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/main_test.go" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
     <property name="settings.editor.selected.configurable" value="editor.preferences.fonts.default" />
   </component>
   <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\develop\ability\dubbo-go-learn" />
+    </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="D:\develop\ability\dubbo-go-learn\cluster" />
       <recent name="D:\develop\ability\dubbo-go-learn\dubbo-test" />
@@ -341,74 +304,147 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Go Build.go build client.go">
-    <configuration name="go build client.go" type="GoApplicationRunConfiguration" factoryName="Go Application" temporary="true" nameIsGenerated="true">
+  <component name="RunManager" selected="Go Test.Test34 in github.com/laz/dubbo-go">
+    <configuration name="go build main_test.go" type="GoApplicationRunConfiguration" factoryName="Go Application" nameIsGenerated="true">
       <module name="dubbo-go-learn" />
-      <working_directory value="D:\develop\ability\dubbo-go-learn\dubbo-test" />
-      <envs>
-        <env name="CONF_CONSUMER_FILE_PATH" value="./conf/client.yml" />
-      </envs>
+      <working_directory value="$PROJECT_DIR$/" />
+      <go_parameters value="-i" />
       <kind value="FILE" />
-      <filePath value="$PROJECT_DIR$/dubbo-test/client.go" />
+      <filePath value="D:\develop\ability\dubbo-go-learn\main_test.go" />
       <package value="github.com/laz/dubbo-go" />
       <directory value="$PROJECT_DIR$/" />
       <method v="2" />
     </configuration>
-    <configuration name="go build demo1.go (1)" type="GoApplicationRunConfiguration" factoryName="Go Application" temporary="true" nameIsGenerated="true">
+    <configuration name="Test22 in github.com/laz/dubbo-go" type="GoTestRunConfiguration" factoryName="Go Test" temporary="true" nameIsGenerated="true">
       <module name="dubbo-go-learn" />
       <working_directory value="$PROJECT_DIR$" />
-      <kind value="FILE" />
-      <filePath value="$PROJECT_DIR$/kownledge/six/demo1.go" />
+      <framework value="gotest" />
+      <kind value="PACKAGE" />
       <package value="github.com/laz/dubbo-go" />
       <directory value="$PROJECT_DIR$/" />
+      <filePath value="D:\develop\ability\dubbo-go-learn\test.go" />
+      <pattern value="^Test22$" />
       <method v="2" />
     </configuration>
-    <configuration name="go build demo1.go (2)" type="GoApplicationRunConfiguration" factoryName="Go Application" temporary="true" nameIsGenerated="true">
+    <configuration name="Test27 in github.com/laz/dubbo-go" type="GoTestRunConfiguration" factoryName="Go Test" temporary="true" nameIsGenerated="true">
       <module name="dubbo-go-learn" />
       <working_directory value="$PROJECT_DIR$" />
-      <kind value="FILE" />
-      <filePath value="$PROJECT_DIR$/kownledge/seven/demo1.go" />
+      <framework value="gotest" />
+      <kind value="PACKAGE" />
       <package value="github.com/laz/dubbo-go" />
       <directory value="$PROJECT_DIR$/" />
+      <filePath value="D:\develop\ability\dubbo-go-learn\test.go" />
+      <pattern value="^Test27$" />
       <method v="2" />
     </configuration>
-    <configuration name="go build demo1.go" type="GoApplicationRunConfiguration" factoryName="Go Application" temporary="true" nameIsGenerated="true">
+    <configuration name="Test28 in github.com/laz/dubbo-go" type="GoTestRunConfiguration" factoryName="Go Test" temporary="true" nameIsGenerated="true">
       <module name="dubbo-go-learn" />
       <working_directory value="$PROJECT_DIR$" />
-      <kind value="FILE" />
-      <filePath value="$PROJECT_DIR$/kownledge/five/demo1.go" />
+      <framework value="gotest" />
+      <kind value="PACKAGE" />
       <package value="github.com/laz/dubbo-go" />
       <directory value="$PROJECT_DIR$/" />
+      <filePath value="D:\develop\ability\dubbo-go-learn\test.go" />
+      <pattern value="^Test28$" />
       <method v="2" />
     </configuration>
-    <configuration name="go build demo2.go" type="GoApplicationRunConfiguration" factoryName="Go Application" temporary="true" nameIsGenerated="true">
+    <configuration name="Test29 in github.com/laz/dubbo-go" type="GoTestRunConfiguration" factoryName="Go Test" temporary="true" nameIsGenerated="true">
       <module name="dubbo-go-learn" />
       <working_directory value="$PROJECT_DIR$" />
-      <kind value="FILE" />
-      <filePath value="$PROJECT_DIR$/kownledge/six/demo2.go" />
+      <framework value="gotest" />
+      <kind value="PACKAGE" />
       <package value="github.com/laz/dubbo-go" />
       <directory value="$PROJECT_DIR$/" />
+      <filePath value="D:\develop\ability\dubbo-go-learn\test.go" />
+      <pattern value="^Test29$" />
+      <method v="2" />
+    </configuration>
+    <configuration name="Test34 in github.com/laz/dubbo-go" type="GoTestRunConfiguration" factoryName="Go Test" temporary="true" nameIsGenerated="true">
+      <module name="dubbo-go-learn" />
+      <working_directory value="$PROJECT_DIR$" />
+      <framework value="gotest" />
+      <kind value="PACKAGE" />
+      <package value="github.com/laz/dubbo-go" />
+      <directory value="$PROJECT_DIR$/" />
+      <filePath value="D:\develop\ability\dubbo-go-learn\test.go" />
+      <pattern value="^Test34$" />
+      <method v="2" />
+    </configuration>
+    <configuration default="true" type="GoTestRunConfiguration" factoryName="Go Test">
+      <module name="dubbo-go-learn" />
+      <working_directory value="$PROJECT_DIR$/" />
+      <go_parameters value="-i" />
+      <framework value="gotest" />
+      <kind value="FILE" />
+      <package value="github.com/laz/dubbo-go" />
+      <directory value="$PROJECT_DIR$/" />
+      <filePath value="D:\develop\ability\dubbo-go-learn\test.go" />
+      <method v="2" />
+    </configuration>
+    <configuration name="main_test.go" type="GoTestRunConfiguration" factoryName="Go Test" nameIsGenerated="true">
+      <module name="dubbo-go-learn" />
+      <working_directory value="$PROJECT_DIR$/" />
+      <go_parameters value="-i" />
+      <framework value="gotest" />
+      <kind value="FILE" />
+      <package value="github.com/laz/dubbo-go" />
+      <directory value="$PROJECT_DIR$/" />
+      <filePath value="D:\develop\ability\dubbo-go-learn\main_test.go" />
       <method v="2" />
     </configuration>
     <list>
-      <item itemvalue="Go Build.go build demo1.go" />
-      <item itemvalue="Go Build.go build client.go" />
-      <item itemvalue="Go Build.go build demo1.go (1)" />
-      <item itemvalue="Go Build.go build demo2.go" />
-      <item itemvalue="Go Build.go build demo1.go (2)" />
+      <item itemvalue="Go Build.go build main_test.go" />
+      <item itemvalue="Go Test.main_test.go" />
+      <item itemvalue="Go Test.Test22 in github.com/laz/dubbo-go" />
+      <item itemvalue="Go Test.Test27 in github.com/laz/dubbo-go" />
+      <item itemvalue="Go Test.Test28 in github.com/laz/dubbo-go" />
+      <item itemvalue="Go Test.Test29 in github.com/laz/dubbo-go" />
+      <item itemvalue="Go Test.Test34 in github.com/laz/dubbo-go" />
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="Go Build.go build client.go" />
-        <item itemvalue="Go Build.go build demo1.go (2)" />
-        <item itemvalue="Go Build.go build demo2.go" />
-        <item itemvalue="Go Build.go build demo1.go (1)" />
-        <item itemvalue="Go Build.go build demo1.go" />
+        <item itemvalue="Go Test.Test34 in github.com/laz/dubbo-go" />
+        <item itemvalue="Go Test.Test29 in github.com/laz/dubbo-go" />
+        <item itemvalue="Go Test.Test28 in github.com/laz/dubbo-go" />
+        <item itemvalue="Go Test.Test27 in github.com/laz/dubbo-go" />
+        <item itemvalue="Go Test.Test22 in github.com/laz/dubbo-go" />
       </list>
     </recent_temporary>
   </component>
   <component name="StructureViewFactory">
     <option name="ACTIVE_ACTIONS" value=",EXPORTABILITY_SORTER" />
+  </component>
+  <component name="TestHistory">
+    <history-entry file="Test15_in_github_com_laz_dubbo-go - 2021.05.08 at 16h 34m 16s.xml">
+      <configuration name="Test15 in github.com/laz/dubbo-go" configurationId="GoTestRunConfiguration" />
+    </history-entry>
+    <history-entry file="Test16_in_github_com_laz_dubbo-go - 2021.05.08 at 16h 35m 20s.xml">
+      <configuration name="Test16 in github.com/laz/dubbo-go" configurationId="GoTestRunConfiguration" />
+    </history-entry>
+    <history-entry file="Test16_in_github_com_laz_dubbo-go - 2021.05.08 at 16h 35m 33s.xml">
+      <configuration name="Test16 in github.com/laz/dubbo-go" configurationId="GoTestRunConfiguration" />
+    </history-entry>
+    <history-entry file="Test20_in_github_com_laz_dubbo-go - 2021.05.08 at 16h 37m 48s.xml">
+      <configuration name="Test20 in github.com/laz/dubbo-go" configurationId="GoTestRunConfiguration" />
+    </history-entry>
+    <history-entry file="Test22_in_github_com_laz_dubbo-go - 2021.05.08 at 16h 39m 22s.xml">
+      <configuration name="Test22 in github.com/laz/dubbo-go" configurationId="GoTestRunConfiguration" />
+    </history-entry>
+    <history-entry file="Test27_in_github_com_laz_dubbo-go - 2021.05.08 at 16h 45m 27s.xml">
+      <configuration name="Test27 in github.com/laz/dubbo-go" configurationId="GoTestRunConfiguration" />
+    </history-entry>
+    <history-entry file="Test28_in_github_com_laz_dubbo-go - 2021.05.08 at 16h 46m 38s.xml">
+      <configuration name="Test28 in github.com/laz/dubbo-go" configurationId="GoTestRunConfiguration" />
+    </history-entry>
+    <history-entry file="Test28_in_github_com_laz_dubbo-go - 2021.05.08 at 16h 46m 55s.xml">
+      <configuration name="Test28 in github.com/laz/dubbo-go" configurationId="GoTestRunConfiguration" />
+    </history-entry>
+    <history-entry file="Test29_in_github_com_laz_dubbo-go - 2021.05.08 at 16h 48m 51s.xml">
+      <configuration name="Test29 in github.com/laz/dubbo-go" configurationId="GoTestRunConfiguration" />
+    </history-entry>
+    <history-entry file="Test34_in_github_com_laz_dubbo-go - 2021.05.08 at 16h 56m 37s.xml">
+      <configuration name="Test34 in github.com/laz/dubbo-go" configurationId="GoTestRunConfiguration" />
+    </history-entry>
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -420,17 +456,16 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="69" y="395" width="1400" height="1010" extended-state="0" />
-    <editor active="true" />
+    <frame x="336" y="116" width="1400" height="1010" extended-state="0" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.8239437" visible="true" weight="0.21119402" />
-      <window_info id="Structure" order="1" sideWeight="0.17605634" side_tool="true" visible="true" weight="0.21119402" />
+      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.7875354" visible="true" weight="0.21119402" />
+      <window_info id="Structure" order="1" sideWeight="0.21246459" side_tool="true" visible="true" weight="0.21119402" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Messages" order="0" weight="0.33188722" />
       <window_info anchor="bottom" id="Message" order="1" />
       <window_info anchor="bottom" id="Find" order="2" weight="0.2646421" />
-      <window_info anchor="bottom" id="Run" order="3" weight="0.5673516" />
-      <window_info anchor="bottom" id="Debug" order="4" visible="true" weight="0.51369864" />
+      <window_info active="true" anchor="bottom" id="Run" order="3" visible="true" weight="0.59703195" />
+      <window_info anchor="bottom" id="Debug" order="4" weight="0.48806942" />
       <window_info anchor="bottom" id="Cvs" order="5" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="6" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="7" weight="0.47939262" />
@@ -512,7 +547,9 @@
     <MESSAGE value="context 使用" />
     <MESSAGE value="go http使用" />
     <MESSAGE value="实现dubbo codec 编码解码" />
-    <option name="LAST_COMMIT_MESSAGE" value="实现dubbo codec 编码解码" />
+    <MESSAGE value="实现hession序列化" />
+    <MESSAGE value="初步实现服务消费者雏形" />
+    <option name="LAST_COMMIT_MESSAGE" value="初步实现服务消费者雏形" />
   </component>
   <component name="VgoProject">
     <integration-enabled>true</integration-enabled>
@@ -526,12 +563,6 @@
           <line>16</line>
           <properties />
           <option name="timeStamp" value="20" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="DlvLineBreakpoint">
-          <url>file://$PROJECT_DIR$/common/proxy/proxy.go</url>
-          <line>157</line>
-          <properties />
-          <option name="timeStamp" value="23" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
@@ -571,61 +602,6 @@
     </expressions>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/registry/nacos/registry.go">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-8">
-          <caret line="88" column="43" selection-start-line="88" selection-start-column="43" selection-end-line="88" selection-end-column="43" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/registry/registry.go">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-8">
-          <caret line="60" column="4" selection-start-line="60" selection-start-column="4" selection-end-line="60" selection-end-column="4" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/registry/nacos/listener.go">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-8">
-          <caret line="35" column="14" selection-start-line="35" selection-start-column="8" selection-end-line="35" selection-end-column="14" />
-          <folding>
-            <element signature="e#15#449#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/common/extension/protocol.go">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="128">
-          <caret line="14" column="5" selection-start-line="14" selection-start-column="5" selection-end-line="14" selection-end-column="5" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/registry/directory/directory.go">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="141">
-          <caret line="217" selection-start-line="217" selection-end-line="217" />
-          <folding>
-            <element signature="e#19#376#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/common/rpc_service.go">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="330">
-          <caret line="23" column="38" lean-forward="true" selection-start-line="23" selection-start-column="38" selection-end-line="23" selection-end-column="38" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/remoting/getty/config.go">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="737">
-          <caret line="142" column="1" selection-start-line="142" selection-start-column="1" selection-end-line="142" selection-end-column="1" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/dubbo-test/main.go">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="65">
@@ -695,13 +671,6 @@
     <entry file="file://$PROJECT_DIR$/remoting/getty/getty_server.go">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/remoting/getty/listener.go">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="198">
-          <caret line="107" lean-forward="true" selection-start-line="107" selection-end-line="107" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/remoting/getty/pool.go">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="165">
@@ -723,13 +692,6 @@
           <folding>
             <element signature="e#18#218#0" expanded="true" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/common/proxy/proxy.go">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="143">
-          <caret line="136" selection-start-line="136" selection-end-line="136" />
         </state>
       </provider>
     </entry>
@@ -816,52 +778,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/cluster/cluster_impl/failover_cluster_invoker.go">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="77">
-          <caret line="63" selection-start-line="63" selection-end-line="63" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/protocol/dubbo/dubbo_invoker.go">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="671">
-          <caret line="115" selection-start-line="115" selection-end-line="115" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/remoting/exchange_client.go">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="147">
-          <caret line="142" selection-start-line="142" selection-end-line="142" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/remoting/getty/getty_client.go">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="460">
-          <caret line="134" selection-start-line="134" selection-end-line="134" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://E:/gopath/pkg/mod/github.com/apache/dubbo-getty@v1.4.3/session.go">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="139">
-          <caret line="86" column="10" selection-start-line="86" selection-start-column="4" selection-end-line="86" selection-end-column="10" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://D:/Go/src/runtime/panic.go">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="403">
           <caret line="678" selection-start-line="678" selection-end-line="678" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/remoting/getty/readwriter.go">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1452">
-          <caret line="98" selection-start-line="98" selection-end-line="98" />
         </state>
       </provider>
     </entry>
@@ -872,10 +792,27 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/protocol/dubbo/impl/serialize.go">
+    <entry file="file://$PROJECT_DIR$/protocol/dubbo/impl/response.go">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="175">
-          <caret line="14" column="5" lean-forward="true" selection-start-line="14" selection-start-column="5" selection-end-line="14" selection-end-column="5" />
+        <state relative-caret-position="395">
+          <caret line="29" selection-start-line="29" selection-end-line="29" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/protocol/dubbo/impl/request.go">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="329">
+          <caret line="23" selection-start-line="23" selection-end-line="23" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/protocol/dubbo/impl/hessian.go">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1253">
+          <caret line="415" column="62" selection-start-line="415" selection-start-column="62" selection-end-line="415" selection-end-column="62" />
+          <folding>
+            <element signature="e#14#336#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -889,57 +826,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/protocol/dubbo/impl/package.go">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="219">
-          <caret line="113" selection-start-line="113" selection-end-line="113" />
-          <folding>
-            <element signature="e#14#41#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/protocol/dubbo/impl/codec.go">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="139">
-          <caret line="13" selection-start-line="13" selection-end-line="13" />
-          <folding>
-            <element signature="e#14#76#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/protocol/dubbo/impl/response.go">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="395">
-          <caret line="27" selection-start-line="27" selection-end-line="27" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/protocol/dubbo/dubbo_codec.go">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-257">
-          <caret line="188" column="35" selection-start-line="188" selection-start-column="35" selection-end-line="188" selection-end-column="35" />
-          <folding>
-            <element signature="e#15#144#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/remoting/exchange.go">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="167">
-          <caret line="104" column="1" selection-start-line="104" selection-start-column="1" selection-end-line="104" selection-end-column="1" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/protocol/dubbo/impl/request.go">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="329">
-          <caret line="23" selection-start-line="23" selection-end-line="23" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/protocol/dubbo/impl/const.go">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="263">
@@ -947,13 +833,148 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/protocol/dubbo/impl/hessian.go">
+    <entry file="file://$PROJECT_DIR$/config/base_config.go">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/remoting/getty/readwriter.go">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="439">
-          <caret line="414" column="62" selection-start-line="414" selection-start-column="57" selection-end-line="414" selection-end-column="62" />
+        <state relative-caret-position="267">
+          <caret line="98" selection-start-line="98" selection-end-line="98" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/protocol/dubbo/impl/serialize.go">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="307">
+          <caret line="20" selection-start-line="20" selection-end-line="20" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/protocol/dubbo/dubbo_codec.go">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="227">
+          <caret line="79" selection-start-line="79" selection-end-line="79" />
           <folding>
-            <element signature="e#14#349#0" expanded="true" />
+            <element signature="e#15#144#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/protocol/dubbo/impl/package.go">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="191">
+          <caret line="61" selection-start-line="61" selection-end-line="61" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/protocol/dubbo/impl/codec.go">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="139">
+          <caret line="219" selection-start-line="219" selection-end-line="219" />
+          <folding>
+            <element signature="e#14#76#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/remoting/getty/listener.go">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="139">
+          <caret line="93" selection-start-line="93" selection-end-line="93" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://E:/gopath/pkg/mod/github.com/apache/dubbo-getty@v1.4.3/session.go">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="161">
+          <caret line="537" selection-start-line="537" selection-end-line="537" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://E:/gopath/pkg/mod/github.com/dubbogo/gost@v1.10.1/sync/task_pool.go">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="235">
+          <caret line="307" lean-forward="true" selection-start-line="307" selection-end-line="307" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/remoting/exchange.go">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="147">
+          <caret line="32" column="4" selection-start-line="32" selection-start-column="4" selection-end-line="32" selection-end-column="4" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/remoting/getty/getty_client.go">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="293">
+          <caret line="169" selection-start-line="169" selection-end-line="169" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/remoting/exchange_client.go">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="249">
+          <caret line="153" selection-start-line="153" selection-end-line="153" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/protocol/dubbo/dubbo_invoker.go">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="267">
+          <caret line="124" selection-start-line="124" selection-end-line="124" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/cluster/cluster_impl/failover_cluster_invoker.go">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="187">
+          <caret line="68" selection-start-line="68" selection-end-line="68" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/kownledge/test.go">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="176">
+          <caret line="8" column="23" lean-forward="true" selection-start-line="8" selection-start-column="23" selection-end-line="8" selection-end-column="23" />
+          <folding>
+            <element signature="e#14#42#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/common/proxy/proxy.go">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="81">
+          <caret line="142" column="13" selection-start-line="142" selection-start-column="13" selection-end-line="142" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/kownledge/five/demo1.go">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="176">
+          <caret line="14" column="69" lean-forward="true" selection-start-line="14" selection-start-column="69" selection-end-line="14" selection-end-column="69" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://D:/Go/src/fmt/print.go">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="123">
+          <caret line="216" column="5" selection-start-line="216" selection-start-column="5" selection-end-line="216" selection-end-column="5" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/main.go">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="132">
+          <caret line="6" column="30" lean-forward="true" selection-start-line="6" selection-start-column="30" selection-end-line="6" selection-end-column="30" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/main_test.go">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="168">
+          <caret line="110" selection-start-line="110" selection-end-line="110" />
         </state>
       </provider>
     </entry>
