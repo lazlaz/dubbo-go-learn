@@ -108,6 +108,9 @@ func (p DubboPackage) IsResponseWithException() bool {
 	flag := PackageResponse | PackageResponse_Exception
 	return p.Header.Type&flag == flag
 }
+func (p DubboPackage) IsRequest() bool {
+	return p.Header.Type&(PackageRequest_TwoWay|PackageRequest) != 0
+}
 
 func (p DubboPackage) IsResponse() bool {
 	return p.Header.Type == PackageResponse

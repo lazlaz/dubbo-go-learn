@@ -14,3 +14,10 @@ func NewRequestPayload(args interface{}, atta map[string]interface{}) *RequestPa
 		Attachments: atta,
 	}
 }
+
+func EnsureRequestPayload(body interface{}) *RequestPayload {
+	if req, ok := body.(*RequestPayload); ok {
+		return req
+	}
+	return NewRequestPayload(body, nil)
+}
