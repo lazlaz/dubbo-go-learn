@@ -12,4 +12,6 @@
 
 6 [context 使用](kownledge/six/READEME.md)
 
-7 [go http使用](kownledge/seven/READEME.md))
+7 [go http使用](kownledge/seven/READEME.md)
+
+8 [go pprof性能工具使用](kownledge/eight/READEME.md)
