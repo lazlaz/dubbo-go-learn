@@ -15,3 +15,5 @@
 7 [go http使用](kownledge/seven/READEME.md)
 
 8 [go pprof性能工具使用](kownledge/eight/READEME.md)
+
+9 [动态保活Worker工作池设计](kownledge/nine/READEME.md)
