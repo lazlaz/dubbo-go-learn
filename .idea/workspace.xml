@@ -2,14 +2,15 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="3ab5e8cb-5c98-4577-9494-dfba3d8af65b" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/kownledge/eleven/README.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/kownledge/eleven/client.go" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/kownledge/eleven/server.go" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/kownledge/ten/README.md" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/kownledge/ten/echo/client/client.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/kownledge/ten/echo/config.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/kownledge/ten/echo/handler/consts.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/kownledge/ten/echo/handler/message_listener.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/kownledge/ten/echo/handler/package_handler.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/kownledge/ten/echo/hello.go" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/kownledge/ten/echo/server/server.go" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -22,77 +23,11 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/kownledge/ten/echo/server/server.go">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="282">
-              <caret line="42" column="17" lean-forward="true" selection-start-line="42" selection-start-column="17" selection-end-line="42" selection-end-column="17" />
+            <state relative-caret-position="440">
+              <caret line="47" column="24" selection-start-line="47" selection-start-column="24" selection-end-line="47" selection-end-column="24" />
               <folding>
-                <element signature="e#16#221#0" expanded="true" />
+                <element signature="e#16#211#0" expanded="true" />
               </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/README.md">
-          <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
-            <state split_layout="SPLIT">
-              <first_editor relative-caret-position="484">
-                <caret line="22" column="33" selection-start-line="22" selection-start-column="33" selection-end-line="22" selection-end-column="33" />
-              </first_editor>
-              <second_editor />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/kownledge/eleven/README.md">
-          <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
-            <state split_layout="SPLIT">
-              <first_editor>
-                <caret column="13" selection-start-column="13" selection-end-column="13" />
-              </first_editor>
-              <second_editor />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/kownledge/eleven/client.go">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="612">
-              <caret line="35" selection-start-line="35" selection-end-line="35" />
-              <folding>
-                <element signature="e#14#44#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/kownledge/eleven/server.go">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="946">
-              <caret line="55" column="3" selection-start-line="55" selection-start-column="3" selection-end-line="55" selection-end-column="3" />
-              <folding>
-                <element signature="e#13#50#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://E:/gopath/pkg/mod/github.com/apache/dubbo-getty@v1.4.3/demo/util/signals.go">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="421">
-              <caret line="32" column="13" selection-start-line="32" selection-start-column="6" selection-end-line="32" selection-end-column="13" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://E:/gopath/pkg/mod/github.com/apache/dubbo-getty@v1.4.3/getty.go">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="94">
-              <caret line="192" column="16" selection-start-line="192" selection-start-column="4" selection-end-line="192" selection-end-column="16" />
             </state>
           </provider>
         </entry>
@@ -100,8 +35,50 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://E:/gopath/pkg/mod/github.com/apache/dubbo-getty@v1.4.3/server.go">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="94">
-              <caret line="63" column="17" selection-start-line="63" selection-start-column="17" selection-end-line="63" selection-end-column="17" />
+            <state relative-caret-position="189">
+              <caret line="326" column="49" selection-start-line="326" selection-start-column="44" selection-end-line="326" selection-end-column="49" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/kownledge/ten/echo/client/client.go">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="451">
+              <caret line="47" column="21" selection-start-line="47" selection-start-column="21" selection-end-line="47" selection-end-column="21" />
+              <folding>
+                <element signature="e#14#256#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://E:/gopath/pkg/mod/github.com/apache/dubbo-getty@v1.4.3/getty.go">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="189">
+              <caret line="130" column="4" selection-start-line="130" selection-start-column="4" selection-end-line="130" selection-end-column="4" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://E:/gopath/pkg/mod/github.com/apache/dubbo-getty@v1.4.3/session.go">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-53">
+              <caret line="366" column="12" selection-start-line="366" selection-start-column="4" selection-end-line="366" selection-end-column="12" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/kownledge/eleven/client.go">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="220">
+              <caret line="10" column="14" selection-start-line="10" selection-start-column="9" selection-end-line="10" selection-end-column="14" />
+              <folding>
+                <element signature="e#14#44#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -109,17 +86,41 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://D:/Go/src/net/net.go">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="206">
-              <caret line="382" column="4" selection-start-line="382" selection-start-column="4" selection-end-line="382" selection-end-column="4" />
+            <state relative-caret-position="8">
+              <caret line="112" column="9" selection-start-line="112" selection-start-column="5" selection-end-line="112" selection-end-column="9" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://E:/gopath/pkg/mod/github.com/apache/dubbo-getty@v1.4.3/session.go">
+        <entry file="file://$PROJECT_DIR$/kownledge/ten/echo/config.go">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="228">
-              <caret line="135" column="23" selection-start-line="135" selection-start-column="23" selection-end-line="135" selection-end-column="23" />
+            <state relative-caret-position="198">
+              <caret line="41" column="5" selection-start-line="41" selection-start-column="5" selection-end-line="41" selection-end-column="5" />
+              <folding>
+                <element signature="e#818#1010#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/kownledge/ten/echo/handler/package_handler.go">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-198">
+              <caret line="21" column="4" selection-start-line="21" selection-start-column="4" selection-end-line="21" selection-end-column="4" />
+              <folding>
+                <element signature="e#18#102#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/kownledge/ten/echo/handler/message_listener.go">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="268">
+              <caret line="37" column="33" lean-forward="true" selection-start-line="37" selection-start-column="33" selection-end-line="37" selection-end-column="33" />
             </state>
           </provider>
         </entry>
@@ -153,7 +154,17 @@
       <find>DEFAULT_REFERENCE_FILTERS</find>
       <find>codec</find>
       <find>accept</find>
+      <find>CheckError</find>
       <find>RunEventLoop</find>
+      <find>WaitCloseSignals</find>
+      <find>listener</find>
+      <find>OnMessage</find>
+      <find>writer</find>
+      <find>Write</find>
+      <find>send</find>
+      <find>EventListener</find>
+      <find>WriteBytes</find>
+      <find>WritePkg</find>
     </findStrings>
     <replaceStrings>
       <replace />
@@ -172,11 +183,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/registry/event.go" />
-        <option value="$PROJECT_DIR$/registry/nacos/listener.go" />
-        <option value="$PROJECT_DIR$/common/rpc_service.go" />
-        <option value="$PROJECT_DIR$/remoting/getty/config.go" />
-        <option value="$PROJECT_DIR$/remoting/getty/readwriter.go" />
         <option value="$PROJECT_DIR$/remoting/getty/listener.go" />
         <option value="$PROJECT_DIR$/remoting/getty/pool.go" />
         <option value="$PROJECT_DIR$/protocol/dubbo/dubbo_protocol.go" />
@@ -218,11 +224,16 @@
         <option value="$PROJECT_DIR$/kownledge/hello.go" />
         <option value="$PROJECT_DIR$/kownledge/ten/README.md" />
         <option value="$PROJECT_DIR$/kownledge/ten/echo/client/client.go" />
-        <option value="$PROJECT_DIR$/kownledge/ten/echo/server/server.go" />
         <option value="$PROJECT_DIR$/README.md" />
         <option value="$PROJECT_DIR$/kownledge/eleven/README.md" />
-        <option value="$PROJECT_DIR$/kownledge/eleven/client.go" />
         <option value="$PROJECT_DIR$/kownledge/eleven/server.go" />
+        <option value="$PROJECT_DIR$/kownledge/eleven/client.go" />
+        <option value="$PROJECT_DIR$/kownledge/ten/echo/server/server.go" />
+        <option value="$PROJECT_DIR$/kownledge/ten/echo/handler/package_handler.go" />
+        <option value="$PROJECT_DIR$/kownledge/ten/echo/handler/consts.go" />
+        <option value="$PROJECT_DIR$/kownledge/ten/echo/handler/message_listener.go" />
+        <option value="$PROJECT_DIR$/kownledge/ten/echo/config.go" />
+        <option value="$PROJECT_DIR$/kownledge/ten/echo/hello.go" />
       </list>
     </option>
   </component>
@@ -240,7 +251,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -262,73 +272,49 @@
             <path>
               <item name="dubbo-go-learn" type="b2602c69:ProjectViewProjectNode" />
               <item name="dubbo-go-learn" type="462c0819:PsiDirectoryNode" />
-              <item name="remoting" type="462c0819:PsiDirectoryNode" />
+              <item name="kownledge" type="462c0819:PsiDirectoryNode" />
+              <item name="ten" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="dubbo-go-learn" type="b2602c69:ProjectViewProjectNode" />
               <item name="dubbo-go-learn" type="462c0819:PsiDirectoryNode" />
-              <item name="remoting" type="462c0819:PsiDirectoryNode" />
-              <item name="getty" type="462c0819:PsiDirectoryNode" />
+              <item name="kownledge" type="462c0819:PsiDirectoryNode" />
+              <item name="ten" type="462c0819:PsiDirectoryNode" />
+              <item name="echo" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="dubbo-go-learn" type="b2602c69:ProjectViewProjectNode" />
+              <item name="dubbo-go-learn" type="462c0819:PsiDirectoryNode" />
+              <item name="kownledge" type="462c0819:PsiDirectoryNode" />
+              <item name="ten" type="462c0819:PsiDirectoryNode" />
+              <item name="echo" type="462c0819:PsiDirectoryNode" />
+              <item name="client" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="dubbo-go-learn" type="b2602c69:ProjectViewProjectNode" />
+              <item name="dubbo-go-learn" type="462c0819:PsiDirectoryNode" />
+              <item name="kownledge" type="462c0819:PsiDirectoryNode" />
+              <item name="ten" type="462c0819:PsiDirectoryNode" />
+              <item name="echo" type="462c0819:PsiDirectoryNode" />
+              <item name="handler" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="dubbo-go-learn" type="b2602c69:ProjectViewProjectNode" />
+              <item name="dubbo-go-learn" type="462c0819:PsiDirectoryNode" />
+              <item name="kownledge" type="462c0819:PsiDirectoryNode" />
+              <item name="ten" type="462c0819:PsiDirectoryNode" />
+              <item name="echo" type="462c0819:PsiDirectoryNode" />
+              <item name="server" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="dubbo-go-learn" type="b2602c69:ProjectViewProjectNode" />
               <item name="External Libraries" type="cb654da1:ExternalLibrariesNode" />
-            </path>
-            <path>
-              <item name="dubbo-go-learn" type="b2602c69:ProjectViewProjectNode" />
-              <item name="External Libraries" type="cb654da1:ExternalLibrariesNode" />
-              <item name="Go Modules &lt;github.com/laz/dubbo-go&gt;" type="20ee2d1f:SyntheticLibraryElementNode" />
-            </path>
-            <path>
-              <item name="dubbo-go-learn" type="b2602c69:ProjectViewProjectNode" />
-              <item name="External Libraries" type="cb654da1:ExternalLibrariesNode" />
-              <item name="Go Modules &lt;github.com/laz/dubbo-go&gt;" type="20ee2d1f:SyntheticLibraryElementNode" />
-              <item name="dubbo-getty@v1.4.3" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="dubbo-go-learn" type="b2602c69:ProjectViewProjectNode" />
-              <item name="External Libraries" type="cb654da1:ExternalLibrariesNode" />
-              <item name="Go Modules &lt;github.com/laz/dubbo-go&gt;" type="20ee2d1f:SyntheticLibraryElementNode" />
-              <item name="dubbo-getty@v1.4.3" type="462c0819:PsiDirectoryNode" />
-              <item name="demo" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="dubbo-go-learn" type="b2602c69:ProjectViewProjectNode" />
-              <item name="External Libraries" type="cb654da1:ExternalLibrariesNode" />
-              <item name="Go Modules &lt;github.com/laz/dubbo-go&gt;" type="20ee2d1f:SyntheticLibraryElementNode" />
-              <item name="dubbo-getty@v1.4.3" type="462c0819:PsiDirectoryNode" />
-              <item name="demo" type="462c0819:PsiDirectoryNode" />
-              <item name="hello" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="dubbo-go-learn" type="b2602c69:ProjectViewProjectNode" />
-              <item name="External Libraries" type="cb654da1:ExternalLibrariesNode" />
-              <item name="Go SDK 1.13.4" type="20ee2d1f:SyntheticLibraryElementNode" />
-            </path>
-            <path>
-              <item name="dubbo-go-learn" type="b2602c69:ProjectViewProjectNode" />
-              <item name="External Libraries" type="cb654da1:ExternalLibrariesNode" />
-              <item name="Go SDK 1.13.4" type="20ee2d1f:SyntheticLibraryElementNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="dubbo-go-learn" type="b2602c69:ProjectViewProjectNode" />
-              <item name="External Libraries" type="cb654da1:ExternalLibrariesNode" />
-              <item name="Go SDK 1.13.4" type="20ee2d1f:SyntheticLibraryElementNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="net" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="dubbo-go-learn" type="b2602c69:ProjectViewProjectNode" />
-              <item name="External Libraries" type="cb654da1:ExternalLibrariesNode" />
-              <item name="Go SDK 1.13.4" type="20ee2d1f:SyntheticLibraryElementNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="runtime" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
         </subPane>
       </pane>
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -370,7 +356,25 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Go Build.go build client.go">
+  <component name="RunManager" selected="Go Build.go build client.go (1)">
+    <configuration default="true" type="GoApplicationRunConfiguration" factoryName="Go Application">
+      <module name="dubbo-go-learn" />
+      <working_directory value="$PROJECT_DIR$/" />
+      <go_parameters value="-i" />
+      <kind value="FILE" />
+      <filePath value="$PROJECT_DIR$/" />
+      <directory value="$PROJECT_DIR$/" />
+      <method v="2" />
+    </configuration>
+    <configuration name="go build client.go (1)" type="GoApplicationRunConfiguration" factoryName="Go Application" temporary="true" nameIsGenerated="true">
+      <module name="dubbo-go-learn" />
+      <working_directory value="$PROJECT_DIR$" />
+      <kind value="FILE" />
+      <filePath value="$PROJECT_DIR$/kownledge/ten/echo/client/client.go" />
+      <package value="github.com/laz/dubbo-go" />
+      <directory value="$PROJECT_DIR$/" />
+      <method v="2" />
+    </configuration>
     <configuration name="go build client.go" type="GoApplicationRunConfiguration" factoryName="Go Application" temporary="true" nameIsGenerated="true">
       <module name="dubbo-go-learn" />
       <working_directory value="$PROJECT_DIR$" />
@@ -404,15 +408,6 @@
       <working_directory value="$PROJECT_DIR$" />
       <kind value="FILE" />
       <filePath value="$PROJECT_DIR$/kownledge/ten/echo/server/server.go" />
-      <package value="github.com/laz/dubbo-go" />
-      <directory value="$PROJECT_DIR$/" />
-      <method v="2" />
-    </configuration>
-    <configuration name="go build worker_main.go (1)" type="GoApplicationRunConfiguration" factoryName="Go Application" temporary="true" nameIsGenerated="true">
-      <module name="dubbo-go-learn" />
-      <working_directory value="$PROJECT_DIR$" />
-      <kind value="FILE" />
-      <filePath value="$PROJECT_DIR$/kownledge/nine/worker_main.go" />
       <package value="github.com/laz/dubbo-go" />
       <directory value="$PROJECT_DIR$/" />
       <method v="2" />
@@ -451,19 +446,19 @@
     <list>
       <item itemvalue="Go Build.go build main_test.go" />
       <item itemvalue="Go Build.go build worker_main.go" />
-      <item itemvalue="Go Build.go build worker_main.go (1)" />
-      <item itemvalue="Go Test.main_test.go" />
       <item itemvalue="Go Build.go build server.go" />
       <item itemvalue="Go Build.go build server.go (1)" />
       <item itemvalue="Go Build.go build client.go" />
+      <item itemvalue="Go Build.go build client.go (1)" />
+      <item itemvalue="Go Test.main_test.go" />
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="Go Build.go build client.go (1)" />
+        <item itemvalue="Go Build.go build server.go" />
         <item itemvalue="Go Build.go build client.go" />
         <item itemvalue="Go Build.go build server.go (1)" />
-        <item itemvalue="Go Build.go build server.go" />
         <item itemvalue="Go Build.go build worker_main.go" />
-        <item itemvalue="Go Build.go build worker_main.go (1)" />
       </list>
     </recent_temporary>
   </component>
@@ -513,16 +508,15 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
-    <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.67559946" visible="true" weight="0.11727079" />
-      <window_info id="Structure" order="1" sideWeight="0.32440057" side_tool="true" visible="true" weight="0.11727079" />
+      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.41448382" visible="true" weight="0.118336886" />
+      <window_info id="Structure" order="1" sideWeight="0.58551615" side_tool="true" visible="true" weight="0.118336886" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Messages" order="0" weight="0.33188722" />
       <window_info anchor="bottom" id="Message" order="1" />
       <window_info anchor="bottom" id="Find" order="2" weight="0.2646421" />
-      <window_info anchor="bottom" id="Run" order="3" weight="0.29718006" />
-      <window_info anchor="bottom" id="Debug" order="4" visible="true" weight="0.23101953" />
+      <window_info anchor="bottom" id="Run" order="3" visible="true" weight="0.29609543" />
+      <window_info anchor="bottom" id="Debug" order="4" weight="0.26138827" />
       <window_info anchor="bottom" id="Cvs" order="5" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="6" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="7" weight="0.47939262" />
@@ -533,7 +527,7 @@
       <window_info anchor="bottom" id="Event Log" order="12" side_tool="true" weight="0.32938388" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
-      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
+      <window_info active="true" anchor="right" content_ui="combo" id="Hierarchy" order="2" visible="true" weight="0.25" />
       <window_info anchor="right" id="Database" order="3" />
     </layout>
   </component>
@@ -581,7 +575,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="通过yaml配置文件解析provider信息" />
     <MESSAGE value="golang 中 sync.Mutex 和 sync.RWMutex" />
     <MESSAGE value="服务导出框架逻辑" />
     <MESSAGE value="go 反射reflect示例" />
@@ -606,7 +599,8 @@
     <MESSAGE value="初步实现服务消费者雏形" />
     <MESSAGE value="go pprof性能工具使用" />
     <MESSAGE value="动态保活Worker工作池设计" />
-    <option name="LAST_COMMIT_MESSAGE" value="动态保活Worker工作池设计" />
+    <MESSAGE value="go socket示例" />
+    <option name="LAST_COMMIT_MESSAGE" value="go socket示例" />
   </component>
   <component name="VgoProject">
     <integration-enabled>true</integration-enabled>
@@ -624,24 +618,6 @@
           <url>file://$PROJECT_DIR$/kownledge/nine/worker_main.go</url>
           <line>5</line>
           <option name="timeStamp" value="21" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="DlvLineBreakpoint">
-          <url>file://E:/gopath/pkg/mod/github.com/apache/dubbo-getty@v1.4.3/server.go</url>
-          <line>463</line>
-          <properties />
-          <option name="timeStamp" value="24" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="DlvLineBreakpoint">
-          <url>file://E:/gopath/pkg/mod/github.com/apache/dubbo-getty@v1.4.3/server.go</url>
-          <line>264</line>
-          <properties />
-          <option name="timeStamp" value="26" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="DlvLineBreakpoint">
-          <url>file://$PROJECT_DIR$/kownledge/ten/echo/server/server.go</url>
-          <line>42</line>
-          <properties />
-          <option name="timeStamp" value="28" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
@@ -681,100 +657,6 @@
     </expressions>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/config/base_config.go">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/remoting/getty/readwriter.go">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="267">
-          <caret line="98" selection-start-line="98" selection-end-line="98" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/protocol/dubbo/impl/serialize.go">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="307">
-          <caret line="20" selection-start-line="20" selection-end-line="20" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/protocol/dubbo/dubbo_codec.go">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="227">
-          <caret line="79" selection-start-line="79" selection-end-line="79" />
-          <folding>
-            <element signature="e#15#144#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/protocol/dubbo/impl/package.go">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="191">
-          <caret line="61" selection-start-line="61" selection-end-line="61" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/protocol/dubbo/impl/codec.go">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="139">
-          <caret line="219" selection-start-line="219" selection-end-line="219" />
-          <folding>
-            <element signature="e#14#76#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/remoting/getty/listener.go">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="139">
-          <caret line="93" selection-start-line="93" selection-end-line="93" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://E:/gopath/pkg/mod/github.com/dubbogo/gost@v1.10.1/sync/task_pool.go">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="235">
-          <caret line="307" lean-forward="true" selection-start-line="307" selection-end-line="307" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/kownledge/test.go" />
-    <entry file="file://$PROJECT_DIR$/protocol/dubbo/dubbo_invoker.go">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2442">
-          <caret line="124" selection-start-line="124" selection-end-line="124" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/cluster/cluster_impl/failover_cluster_invoker.go">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1232">
-          <caret line="68" selection-start-line="68" selection-end-line="68" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/common/proxy/proxy.go">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2838">
-          <caret line="142" column="13" selection-start-line="142" selection-start-column="13" selection-end-line="142" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/main_test.go">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2354">
-          <caret line="110" selection-start-line="110" selection-end-line="110" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://D:/Go/src/fmt/print.go">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="4598">
-          <caret line="216" column="5" selection-start-line="216" selection-start-column="5" selection-end-line="216" selection-end-column="5" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/remoting/exchange_client.go">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="3168">
@@ -818,13 +700,6 @@
             <caret column="16" lean-forward="true" selection-start-column="2" selection-end-column="16" />
           </first_editor>
           <second_editor />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/go.mod">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="374">
-          <caret line="17" column="4" selection-start-line="17" selection-start-column="4" selection-end-line="17" selection-end-column="20" />
         </state>
       </provider>
     </entry>
@@ -963,72 +838,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/kownledge/ten/echo/client/client.go">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="539">
-          <caret line="47" column="20" selection-start-line="47" selection-start-column="20" selection-end-line="47" selection-end-column="20" />
-          <folding>
-            <element signature="e#14#256#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://E:/gopath/pkg/mod/github.com/apache/dubbo-getty@v1.4.3/demo/hello/hello.go">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="387">
-          <caret line="27" column="5" selection-start-line="27" selection-start-column="5" selection-end-line="27" selection-end-column="5" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://E:/gopath/pkg/mod/github.com/apache/dubbo-getty@v1.4.3/connection.go">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="74">
           <caret line="157" column="5" selection-start-line="157" selection-start-column="5" selection-end-line="157" selection-end-column="5" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://E:/gopath/pkg/mod/github.com/apache/dubbo-getty@v1.4.3/session.go">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="228">
-          <caret line="135" column="23" selection-start-line="135" selection-start-column="23" selection-end-line="135" selection-end-column="23" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://D:/Go/src/net/net.go">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="206">
-          <caret line="382" column="4" selection-start-line="382" selection-start-column="4" selection-end-line="382" selection-end-column="4" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://E:/gopath/pkg/mod/github.com/apache/dubbo-getty@v1.4.3/demo/util/signals.go">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="421">
-          <caret line="32" column="13" selection-start-line="32" selection-start-column="6" selection-end-line="32" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://E:/gopath/pkg/mod/github.com/apache/dubbo-getty@v1.4.3/getty.go">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="94">
-          <caret line="192" column="16" selection-start-line="192" selection-start-column="4" selection-end-line="192" selection-end-column="16" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://E:/gopath/pkg/mod/github.com/apache/dubbo-getty@v1.4.3/server.go">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="94">
-          <caret line="63" column="17" selection-start-line="63" selection-start-column="17" selection-end-line="63" selection-end-column="17" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/kownledge/ten/echo/server/server.go">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="282">
-          <caret line="42" column="17" lean-forward="true" selection-start-line="42" selection-start-column="17" selection-end-line="42" selection-end-column="17" />
-          <folding>
-            <element signature="e#16#221#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1052,23 +865,200 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/kownledge/eleven/client.go">
+    <entry file="file://D:/Go/src/net/http/server.go">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="612">
-          <caret line="35" selection-start-line="35" selection-end-line="35" />
+        <state relative-caret-position="206">
+          <caret line="2865" column="19" selection-start-line="2865" selection-start-column="19" selection-end-line="2865" selection-end-column="19" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://E:/gopath/pkg/mod/github.com/gorilla/websocket@v1.4.2/server.go">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="206">
+          <caret line="25" column="5" selection-start-line="25" selection-start-column="5" selection-end-line="25" selection-end-column="5" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://E:/gopath/pkg/mod/github.com/dubbogo/gost@v1.10.1/sync/task_pool.go">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="165">
+          <caret line="38" column="5" selection-start-line="38" selection-start-column="5" selection-end-line="38" selection-end-column="5" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://E:/gopath/pkg/mod/github.com/apache/dubbo-getty@v1.4.3/demo/util/limit_linux.go">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-27" />
+      </provider>
+    </entry>
+    <entry file="file://E:/gopath/pkg/mod/github.com/apache/dubbo-getty@v1.4.3/demo/util/signals.go">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="233">
+          <caret line="29" column="5" selection-start-line="29" selection-start-column="5" selection-end-line="29" selection-end-column="5" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://E:/gopath/pkg/mod/github.com/apache/dubbo-getty@v1.4.3/demo/hello/tcp/server/server.go">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="308">
+          <caret line="29" lean-forward="true" selection-start-line="29" selection-end-line="29" selection-end-column="50" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/go.mod">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret column="30" lean-forward="true" selection-start-column="22" selection-end-column="30" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://E:/gopath/pkg/mod/github.com/apache/dubbo-getty@v1.4.3/demo/hello/pkghandler.go">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="55">
+          <caret line="53" column="9" lean-forward="true" selection-start-line="53" selection-start-column="9" selection-end-line="53" selection-end-column="9" />
           <folding>
-            <element signature="e#14#44#0" expanded="true" />
+            <element signature="e#818#902#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://E:/gopath/pkg/mod/github.com/apache/dubbo-getty@v1.4.3/demo/hello/messagelistener.go">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="297">
+          <caret line="38" lean-forward="true" selection-start-line="38" selection-end-line="38" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://E:/gopath/pkg/mod/github.com/apache/dubbo-getty@v1.4.3/demo/hello/tcp/config.go">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="217">
+          <caret line="39" column="5" selection-start-line="39" selection-start-column="5" selection-end-line="39" selection-end-column="5" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://E:/gopath/pkg/mod/github.com/apache/dubbo-getty@v1.4.3/demo/hello/consts.go">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="388">
+          <caret line="25" column="4" selection-start-line="25" selection-start-column="4" selection-end-line="25" selection-end-column="4" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/kownledge/ten/echo/hello.go">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="440">
+          <caret line="23" column="23" selection-start-line="23" selection-start-column="23" selection-end-line="23" selection-end-column="23" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/kownledge/ten/echo/handler/consts.go">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="220">
+          <caret line="10" column="4" selection-start-line="10" selection-start-column="4" selection-end-line="10" selection-end-column="4" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://E:/gopath/pkg/mod/github.com/apache/dubbo-getty@v1.4.3/demo/hello/hello.go">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="206">
+          <caret line="27" column="5" selection-start-line="27" selection-start-column="5" selection-end-line="27" selection-end-column="5" />
+          <folding>
+            <element signature="e#818#861#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/kownledge/eleven/server.go">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="946">
-          <caret line="55" column="3" selection-start-line="55" selection-start-column="3" selection-end-line="55" selection-end-column="3" />
+        <state relative-caret-position="422">
+          <caret line="42" column="72" selection-start-line="42" selection-start-column="66" selection-end-line="42" selection-end-column="72" />
           <folding>
-            <element signature="e#13#50#0" expanded="true" />
+            <element signature="e#14#51#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/kownledge/ten/echo/server/server.go">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="440">
+          <caret line="47" column="24" selection-start-line="47" selection-start-column="24" selection-end-line="47" selection-end-column="24" />
+          <folding>
+            <element signature="e#16#211#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/kownledge/ten/echo/config.go">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="198">
+          <caret line="41" column="5" selection-start-line="41" selection-start-column="5" selection-end-line="41" selection-end-column="5" />
+          <folding>
+            <element signature="e#818#1010#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/kownledge/ten/echo/client/client.go">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="451">
+          <caret line="47" column="21" selection-start-line="47" selection-start-column="21" selection-end-line="47" selection-end-column="21" />
+          <folding>
+            <element signature="e#14#256#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/kownledge/ten/echo/handler/package_handler.go">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-198">
+          <caret line="21" column="4" selection-start-line="21" selection-start-column="4" selection-end-line="21" selection-end-column="4" />
+          <folding>
+            <element signature="e#18#102#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/kownledge/ten/echo/handler/message_listener.go">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="268">
+          <caret line="37" column="33" lean-forward="true" selection-start-line="37" selection-start-column="33" selection-end-line="37" selection-end-column="33" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://D:/Go/src/net/net.go">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="8">
+          <caret line="112" column="9" selection-start-line="112" selection-start-column="5" selection-end-line="112" selection-end-column="9" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/kownledge/eleven/client.go">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="220">
+          <caret line="10" column="14" selection-start-line="10" selection-start-column="9" selection-end-line="10" selection-end-column="14" />
+          <folding>
+            <element signature="e#14#44#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://E:/gopath/pkg/mod/github.com/apache/dubbo-getty@v1.4.3/server.go">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="189">
+          <caret line="326" column="49" selection-start-line="326" selection-start-column="44" selection-end-line="326" selection-end-column="49" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://E:/gopath/pkg/mod/github.com/apache/dubbo-getty@v1.4.3/getty.go">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="189">
+          <caret line="130" column="4" selection-start-line="130" selection-start-column="4" selection-end-line="130" selection-end-column="4" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://E:/gopath/pkg/mod/github.com/apache/dubbo-getty@v1.4.3/session.go">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-53">
+          <caret line="366" column="12" selection-start-line="366" selection-start-column="4" selection-end-line="366" selection-end-column="12" />
         </state>
       </provider>
     </entry>
