@@ -1,0 +1,64 @@
+package main
+
+import (
+	"flag"
+)
+
+import (
+	"github.com/apache/dubbo-getty"
+	"github.com/dubbogo/gost/sync"
+)
+
+import (
+	"github.com/apache/dubbo-getty/demo/hello"
+	"github.com/apache/dubbo-getty/demo/hello/tcp"
+	"github.com/apache/dubbo-getty/demo/util"
+)
+
+var (
+	ip          = flag.String("ip", "127.0.0.1", "server IP")
+	connections = flag.Int("conn", 1, "number of tcp connections")
+
+	taskPoolMode = flag.Bool("taskPool", false, "task pool mode")
+	taskPoolSize = flag.Int("task_pool_size", 2000, "task poll size")
+	pprofPort    = flag.Int("pprof_port", 65431, "pprof http port")
+)
+
+var taskPool gxsync.GenericTaskPool
+
+func main() {
+	flag.Parse()
+
+	util.SetLimit()
+
+	util.Profiling(*pprofPort)
+
+	if *taskPoolMode {
+		taskPool = gxsync.NewTaskPoolSimple(*taskPoolSize)
+	}
+
+	client := getty.NewTCPClient(
+		getty.WithServerAddress(*ip+":8090"),
+		getty.WithConnectionNumber(*connections),
+		getty.WithClientTaskPool(taskPool),
+	)
+
+	client.RunEventLoop(NewHelloClientSession)
+
+	go hello.ClientRequest()
+
+	util.WaitCloseSignals(client)
+	taskPool.Close()
+}
+
+// NewHelloClientSession use for init client session
+func NewHelloClientSession(session getty.Session) (err error) {
+	tcp.EventListener.SessionOnOpen = func(session getty.Session) {
+		hello.Sessions = append(hello.Sessions, session)
+	}
+	err = tcp.InitialSession(session)
+	if err != nil {
+		return
+	}
+	return
+}

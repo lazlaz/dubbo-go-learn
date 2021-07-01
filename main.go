@@ -1,11 +1,20 @@
 package main
 
-import "fmt"
+import "sync"
+
+const N = 10
+
+var wg = &sync.WaitGroup{}
 
 func main() {
-	fmt.Print("xx")
-	a := [5]int{1, 2, 3, 4, 5}
-	s := a[3:4:4]
-	fmt.Println(s[0])
-	fmt.Sprintf("abc%d", 123)
+
+	for i := 0; i < N; i++ {
+		go func(i int) {
+			wg.Add(1)
+			println(i)
+			defer wg.Done()
+		}(i)
+	}
+	wg.Wait()
+
 }
