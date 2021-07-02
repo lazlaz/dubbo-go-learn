@@ -1,7 +1,32 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="BranchesTreeState">
+    <expand>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="LOCAL_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="GROUP_NODE:origin" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+    </expand>
+    <select />
+  </component>
   <component name="ChangeListManager">
-    <list default="true" id="3ab5e8cb-5c98-4577-9494-dfba3d8af65b" name="Default Changelist" comment="" />
+    <list default="true" id="3ab5e8cb-5c98-4577-9494-dfba3d8af65b" name="Default Changelist" comment="update">
+      <change afterPath="$PROJECT_DIR$/kownledge/fourteen/README.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/kownledge/fourteen/addressbook/addressbook.proto" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/kownledge/fourteen/demo1.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/go.mod" beforeDir="false" afterPath="$PROJECT_DIR$/go.mod" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -58,7 +83,6 @@
   </component>
   <component name="PropertiesComponent">
     <property name="DefaultGoTemplateProperty" value="Go File" />
-    <property name="GO_FMT" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="configurable.Global.GOPATH.is.expanded" value="true" />
@@ -83,7 +107,26 @@
       <recent name="D:\develop\ability\dubbo-go-learn\test" />
     </key>
   </component>
-  <component name="RunManager" selected="Go Test.Test34 in github.com/laz/dubbo-go">
+  <component name="RunManager" selected="Go Build.go build github.com/laz/dubbo-go/kownledge/fourteen">
+    <configuration default="true" type="GoApplicationRunConfiguration" factoryName="Go Application">
+      <module name="dubbo-go-learn" />
+      <working_directory value="$PROJECT_DIR$" />
+      <go_parameters value="-i" />
+      <kind value="FILE" />
+      <filePath value="$PROJECT_DIR$" />
+      <package value="github.com/laz/dubbo-go" />
+      <directory value="$PROJECT_DIR$" />
+      <method v="2" />
+    </configuration>
+    <configuration name="go build github.com/laz/dubbo-go/kownledge/fourteen" type="GoApplicationRunConfiguration" factoryName="Go Application" temporary="true" nameIsGenerated="true">
+      <module name="dubbo-go-learn" />
+      <working_directory value="$PROJECT_DIR$" />
+      <kind value="PACKAGE" />
+      <filePath value="$PROJECT_DIR$/kownledge/fourteen/demo1.go" />
+      <package value="github.com/laz/dubbo-go/kownledge/fourteen" />
+      <directory value="$PROJECT_DIR$" />
+      <method v="2" />
+    </configuration>
     <configuration name="go build main_test.go" type="GoApplicationRunConfiguration" factoryName="Go Application" nameIsGenerated="true">
       <module name="dubbo-go-learn" />
       <working_directory value="$PROJECT_DIR$/" />
@@ -92,17 +135,6 @@
       <filePath value="D:/develop/ability/dubbo-go-learn/main_test.go" />
       <package value="github.com/laz/dubbo-go" />
       <directory value="$PROJECT_DIR$/" />
-      <method v="2" />
-    </configuration>
-    <configuration name="Test22 in github.com/laz/dubbo-go" type="GoTestRunConfiguration" factoryName="Go Test" temporary="true" nameIsGenerated="true">
-      <module name="dubbo-go-learn" />
-      <working_directory value="$PROJECT_DIR$" />
-      <framework value="gotest" />
-      <kind value="PACKAGE" />
-      <package value="github.com/laz/dubbo-go" />
-      <directory value="$PROJECT_DIR$/" />
-      <filePath value="D:/develop/ability/dubbo-go-learn/test.go" />
-      <pattern value="^Test22$" />
       <method v="2" />
     </configuration>
     <configuration name="Test27 in github.com/laz/dubbo-go" type="GoTestRunConfiguration" factoryName="Go Test" temporary="true" nameIsGenerated="true">
@@ -174,19 +206,19 @@
     <list>
       <item itemvalue="Go Build.go build main_test.go" />
       <item itemvalue="Go Test.main_test.go" />
-      <item itemvalue="Go Test.Test22 in github.com/laz/dubbo-go" />
       <item itemvalue="Go Test.Test27 in github.com/laz/dubbo-go" />
       <item itemvalue="Go Test.Test28 in github.com/laz/dubbo-go" />
       <item itemvalue="Go Test.Test29 in github.com/laz/dubbo-go" />
       <item itemvalue="Go Test.Test34 in github.com/laz/dubbo-go" />
+      <item itemvalue="Go Build.go build github.com/laz/dubbo-go/kownledge/fourteen" />
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="Go Build.go build github.com/laz/dubbo-go/kownledge/fourteen" />
         <item itemvalue="Go Test.Test34 in github.com/laz/dubbo-go" />
         <item itemvalue="Go Test.Test29 in github.com/laz/dubbo-go" />
         <item itemvalue="Go Test.Test28 in github.com/laz/dubbo-go" />
         <item itemvalue="Go Test.Test27 in github.com/laz/dubbo-go" />
-        <item itemvalue="Go Test.Test22 in github.com/laz/dubbo-go" />
       </list>
     </recent_temporary>
   </component>
@@ -273,7 +305,6 @@
     <MESSAGE value="注册registry协议和doubbo协议框架" />
     <MESSAGE value="实现服务元数据信息在nacos上注册" />
     <MESSAGE value="实现getty服务器启动" />
-    <MESSAGE value="update" />
     <MESSAGE value="go signal.Notify优雅退出" />
     <MESSAGE value="consumer消费者框架初步" />
     <MESSAGE value="实现registry protocol Refer方法" />
@@ -287,22 +318,43 @@
     <MESSAGE value="实现dubbo codec 编码解码" />
     <MESSAGE value="实现hession序列化" />
     <MESSAGE value="初步实现服务消费者雏形" />
-    <option name="LAST_COMMIT_MESSAGE" value="初步实现服务消费者雏形" />
+    <MESSAGE value="update" />
+    <option name="LAST_COMMIT_MESSAGE" value="update" />
   </component>
   <component name="VgoProject">
     <integration-enabled>true</integration-enabled>
     <environment>
       <map>
-        <entry key="GOPROXY" value="direct" />
+        <entry key="GOPROXY" value="https://goproxy.cn,direct" />
       </map>
     </environment>
     <proxy>direct</proxy>
   </component>
   <component name="WindowStateProjectService">
-    <state x="461" y="164" key="SettingsEditor" timestamp="1625144390767">
+    <state x="666" y="320" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1625145076789">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="461" y="164" key="SettingsEditor/0.0.1920.1040@0.0.1920.1040" timestamp="1625144390767" />
+    <state x="666" y="320" key="#com.intellij.fileTypes.FileTypeChooser/0.0.1920.1040@0.0.1920.1040" timestamp="1625145076789" />
+    <state x="184" y="86" key="DiffContextDialog" timestamp="1625144483260">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="184" y="86" key="DiffContextDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1625144483260" />
+    <state x="847" y="379" key="EnvironmentVariablesDialog" timestamp="1625187286135">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="847" y="379" key="EnvironmentVariablesDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1625187286135" />
+    <state x="184" y="86" key="MergeDialog" timestamp="1625144525140">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="184" y="86" key="MergeDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1625144525140" />
+    <state x="595" y="280" key="MultipleFileMergeDialog" timestamp="1625144528189">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="595" y="280" key="MultipleFileMergeDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1625144528189" />
+    <state x="461" y="164" key="SettingsEditor" timestamp="1625187287739">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="461" y="164" key="SettingsEditor/0.0.1920.1040@0.0.1920.1040" timestamp="1625187287739" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
